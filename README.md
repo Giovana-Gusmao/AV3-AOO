@@ -6,8 +6,8 @@ Esse trabalho desenvolvido tem como objetivo transformar um problema real dos pr
 Sendo a sua situação problema a de como modelar uma plataforma flexível e segura para profissionais de Psicologia, garantindo que todos os diagramas, requisitos, regras,dados e critérios de qualidade descrevam o mesmo produto?
 
 **Componentes:**
-Albert Cláudio Arruda Bascimento
-Giovana Gusmão Santos
-Hugo Andrade Cerqueira
-Igor Jerônimo Rosário de Almeida
-Patrick Ribeiro Duarte
+Albert Cláudio Arruda Nascimento,
+Giovana Gusmão Santos,
+Hugo Andrade Cerqueira,
+Igor Jerônimo Rosário de Almeida,
+Patrick Ribeiro Duarte,
