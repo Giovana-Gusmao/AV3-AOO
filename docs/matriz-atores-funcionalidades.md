@@ -8,3 +8,5 @@ Esta matriz apresenta a relação entre os atores do sistema e as funcionalidade
 ° — : a funcionalidade não está atribuída a esse ator nos requisitos identificados.
 
 ## Matriz de Atores e Funcionalidades:
+
+![Matriz de Atores e Funcionalidades do sistema](<Matriz-atores-funcionalidades.png>)
