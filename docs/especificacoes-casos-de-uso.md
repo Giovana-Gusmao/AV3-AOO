@@ -1,1037 +1,601 @@
-## UC01 — Autenticar usuário
+## UC-01 — Autenticar usuário
 
-**Requisitos relacionados:** RF-001 e RNF-001.
+**Requisito relacionado:** RF-001 — Autenticar usuário  
+**Ator principal:** Administrador, psicólogo ou recepcionista/atendente.
 
-**Ator principal:** Administrador, Recepcionista ou Psicólogo.
-
-**Objetivo:** Permitir que usuários cadastrados e ativos acessem a plataforma por meio de suas credenciais individuais.
+**Objetivo:** Permitir que usuários cadastrados e ativos acessem a plataforma utilizando suas credenciais individuais.
 
 **Pré-condições:**
-- O usuário possui cadastro no sistema.
-- O usuário está com o acesso ativo.
+- O usuário está cadastrado e ativo.
+- O usuário possui credenciais individuais.
 
 **Fluxo principal:**
-1. O usuário acessa a tela de login.
-2. O sistema solicita as credenciais.
-3. O usuário informa suas credenciais.
-4. O sistema valida as informações.
-5. O sistema verifica se o usuário está ativo.
-6. O sistema identifica o perfil e as permissões do usuário.
-7. O sistema libera o acesso autorizado.
+1. O usuário informa suas credenciais individuais.
+2. O sistema realiza a autenticação.
+3. O sistema permite o acesso às funcionalidades autorizadas para o usuário.
 
-**Fluxos alternativos:**
-
-**FA01 — Credenciais inválidas**
-1. O sistema identifica credenciais incorretas.
-2. O sistema informa que a autenticação não foi realizada.
-3. O usuário pode tentar novamente.
-
-**FA02 — Usuário inativo ou bloqueado**
-1. O sistema identifica que o acesso está inativo.
-2. O sistema impede a entrada na plataforma.
-3. O sistema informa que o acesso não está disponível.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha técnica, o sistema informa que não foi possível concluir a autenticação.
+- Usuário sem autorização não deve acessar funcionalidades restritas, conforme RF-027 e RN-020.
+- O comportamento específico para credenciais incorretas não está detalhado no documento.
 
 **Pós-condições:**
-- Em caso de sucesso, o usuário acessa as funcionalidades autorizadas.
-- Em caso de falha, o acesso não é liberado.
+- O usuário autenticado pode acessar as funcionalidades autorizadas conforme seu perfil e suas permissões.
 
----
+## UC-02 — Gerenciar usuários
 
-## UC02 — Gerenciar usuários
-
-**Requisito relacionado:** RF-002.
-
+**Requisito relacionado:** RF-002 — Gerenciar usuários  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador consulte os usuários cadastrados e gerencie suas informações conforme as funcionalidades previstas no sistema.
+**Objetivo:** Permitir o cadastro e a atualização dos usuários da plataforma.
 
 **Pré-condições:**
-- O administrador está autenticado, ativo e autorizado a gerenciar usuários.
-- Para alterar informações, o usuário selecionado está cadastrado no sistema.
+- O administrador está autenticado e possui permissão para gerenciar usuários, conforme RF-027 e RN-020.
 
 **Fluxo principal:**
-1. O administrador acessa a área de gerenciamento de usuários.
-2. O sistema apresenta as opções disponíveis.
-3. O administrador localiza e seleciona um usuário.
-4. O sistema apresenta as informações cadastradas.
-5. O administrador seleciona a opção de alteração.
-6. O administrador modifica as informações desejadas.
-7. O sistema valida os dados.
-8. O administrador confirma a alteração.
-9. O sistema salva as informações.
-10. O sistema informa que a alteração foi concluída.
+1. O administrador solicita o gerenciamento de usuários.
+2. O administrador escolhe cadastrar ou atualizar um usuário.
+3. No cadastro, informa os dados obrigatórios definidos pelo sistema.
+4. Na atualização, altera as informações do usuário.
+5. O sistema registra a operação realizada.
 
 **Fluxos alternativos:**
-
-**FA01 — Usuário não encontrado**
-1. O sistema não localiza o usuário pesquisado.
-2. O sistema informa que não encontrou o cadastro.
-3. O administrador pode realizar outra pesquisa.
-
-**FA02 — Dados inválidos**
-1. O sistema identifica informações inválidas ou incompletas.
-2. O sistema informa quais dados precisam ser corrigidos.
-3. O administrador corrige os dados.
-4. O sistema realiza uma nova validação.
-
-**FA03 — Cancelamento da alteração**
-1. O administrador desiste antes de confirmar.
-2. O sistema descarta as alterações não salvas.
-3. O sistema retorna à área de gerenciamento.
+- O administrador pode optar pelo cadastro ou pela atualização de usuário.
 
 **Exceções:**
-- Se ocorrer uma falha técnica ao salvar os dados, o sistema informa que a operação não foi concluída.
+- O sistema não permite criar usuários com identificador de acesso já utilizado por outra conta (CA-001.2).
+- O comportamento detalhado para dados inválidos não está especificado no documento.
 
 **Pós-condições:**
-- Em caso de sucesso, as informações são atualizadas.
-- Em caso de cancelamento ou falha, a alteração não é considerada concluída.
+- O usuário é cadastrado ou atualizado, conforme a operação realizada.
 
-**Observação:** A inclusão de novos usuários deve seguir o escopo definido para o RF-002. O controle de ativação e bloqueio e o gerenciamento de perfis e permissões são detalhados nos UC03 e UC04.
+## UC-03 — Ativar e bloquear usuários
 
----
-
-## UC03 — Ativar e bloquear usuários
-
-**Requisito relacionado:** RF-003.
-
+**Requisito relacionado:** RF-003 — Ativar e bloquear usuários  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador ative ou bloqueie o acesso de usuários à plataforma.
+**Objetivo:** Permitir ao administrador ativar ou bloquear o acesso de usuários.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado.
-- O usuário cujo acesso será alterado está cadastrado.
+- O administrador está autenticado e possui permissão para realizar a operação.
 
 **Fluxo principal:**
-1. O administrador acessa o gerenciamento de usuários.
-2. O sistema apresenta os usuários cadastrados.
-3. O administrador seleciona um usuário.
-4. O sistema apresenta a situação atual do acesso.
-5. O administrador escolhe ativar ou bloquear o acesso.
-6. O sistema solicita a confirmação da operação, se aplicável.
-7. O administrador confirma.
-8. O sistema atualiza a situação do usuário.
-9. O sistema informa o resultado.
+1. O administrador solicita a ativação ou o bloqueio de um usuário.
+2. O sistema realiza a operação solicitada.
 
 **Fluxos alternativos:**
-
-**FA01 — Administrador cancela a operação**
-1. O administrador desiste antes da confirmação.
-2. O sistema mantém a situação atual do usuário.
-
-**FA02 — Situação já corresponde à ação solicitada**
-1. O sistema identifica que o usuário já está ativo ou bloqueado conforme a ação escolhida.
-2. O sistema informa que não é necessária uma alteração.
+- O administrador pode optar por ativar ou bloquear o acesso.
 
 **Exceções:**
-- Se ocorrer uma falha ao atualizar o acesso, o sistema informa que a operação não foi concluída.
+- Quando um usuário é bloqueado, o sistema deve impedir novos acessos e invalidar o acesso ativo quando tecnicamente aplicável (CA-001.4).
 
 **Pós-condições:**
-- Em caso de sucesso, a situação do acesso é atualizada.
-- O usuário bloqueado não consegue autenticar-se enquanto o bloqueio estiver vigente.
+- O acesso do usuário fica ativado ou bloqueado, conforme a operação realizada.
 
----
+## UC-04 — Gerenciar perfis e permissões
 
-## UC04 — Gerenciar perfis e permissões
-
-**Requisito relacionado:** RF-004.
-
+**Requisito relacionado:** RF-004 — Gerenciar perfis e permissões  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador gerencie os perfis e as permissões de acesso dos usuários.
+**Objetivo:** Permitir que o administrador defina e gerencie os perfis e as permissões associados aos usuários.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado a gerenciar permissões.
-- O usuário que terá suas permissões alteradas está cadastrado.
+- O administrador está autenticado e possui permissão para gerenciar perfis e permissões.
 
 **Fluxo principal:**
-1. O administrador acessa a área de perfis e permissões.
-2. O sistema apresenta os usuários e as opções disponíveis.
-3. O administrador seleciona o usuário desejado.
-4. O sistema apresenta o perfil e as permissões atuais.
-5. O administrador seleciona o perfil ou as permissões que deseja modificar.
-6. O sistema valida a alteração.
-7. O administrador confirma a operação.
-8. O sistema salva as novas permissões.
-9. O sistema informa que a operação foi concluída.
+1. O administrador solicita o gerenciamento de perfis e permissões.
+2. Seleciona o usuário cujas permissões serão gerenciadas.
+3. Define ou altera o perfil e as permissões do usuário.
+4. O sistema registra as alterações.
 
-**Fluxos alternativos:**
-
-**FA01 — Alteração cancelada**
-1. O administrador desiste antes de confirmar.
-2. O sistema mantém as permissões anteriores.
-
-**FA02 — Configuração inválida**
-1. O sistema identifica uma configuração inválida.
-2. O sistema informa que a alteração não pode ser realizada.
-3. O administrador pode revisar a configuração.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha ao salvar as permissões, o sistema informa que a operação não foi concluída.
+- Usuários sem a permissão correspondente não devem conseguir acessar funcionalidades restritas, inclusive por tentativa de acesso direto (CA-001.5).
 
 **Pós-condições:**
-- Em caso de sucesso, as permissões são atualizadas.
-- O acesso às funcionalidades deve respeitar as permissões vigentes.
+- O usuário possui o perfil e as permissões definidos pelo administrador.
 
----
+## UC-05 — Gerenciar unidades
 
-## UC05 — Gerenciar unidades
-
-**Requisito relacionado:** RF-005.
-
+**Requisito relacionado:** RF-005 — Gerenciar unidades  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador gerencie as unidades da organização.
+**Objetivo:** Permitir o cadastro e a atualização das unidades pertencentes à organização.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado a gerenciar unidades.
+- O administrador está autenticado e possui permissão para gerenciar unidades.
 
 **Fluxo principal:**
-1. O administrador acessa a área de unidades.
-2. O sistema apresenta as opções disponíveis.
-3. O administrador seleciona a operação desejada.
-4. O administrador informa ou modifica os dados da unidade, conforme a operação.
-5. O sistema valida as informações.
-6. O administrador confirma a operação.
-7. O sistema registra a alteração.
-8. O sistema apresenta o resultado.
+1. O administrador solicita o gerenciamento de unidades.
+2. Escolhe cadastrar ou atualizar uma unidade.
+3. No cadastro, informa os dados obrigatórios.
+4. O sistema registra a operação realizada.
 
 **Fluxos alternativos:**
+- O administrador pode cadastrar uma nova unidade ou atualizar uma unidade existente.
 
-**FA01 — Dados inválidos**
-1. O sistema identifica dados inválidos ou obrigatórios não preenchidos.
-2. O sistema informa o que precisa ser corrigido.
-3. O administrador ajusta as informações.
-
-**FA02 — Operação cancelada**
-1. O administrador desiste antes da confirmação.
-2. O sistema descarta as alterações não salvas.
-
-**Exceções:**
-- Se ocorrer uma falha ao salvar os dados, o sistema informa que a operação não foi concluída.
+**Exceções:** Não especificadas no documento.
 
 **Pós-condições:**
-- A unidade é cadastrada ou tem seus dados atualizados, conforme a operação concluída.
+- A unidade é cadastrada ou atualizada.
 
----
+## UC-06 — Gerenciar profissionais
 
-## UC06 — Gerenciar profissionais
-
-**Requisito relacionado:** RF-006.
-
+**Requisito relacionado:** RF-006 — Gerenciar profissionais  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador gerencie os registros dos profissionais da organização.
+**Objetivo:** Permitir que o administrador visualize e mantenha as informações administrativas dos profissionais cadastrados.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado a gerenciar profissionais.
+- O administrador está autenticado e possui permissão para acessar as informações administrativas dos profissionais.
 
 **Fluxo principal:**
-1. O administrador acessa a área de profissionais.
-2. O sistema apresenta as opções disponíveis.
-3. O administrador seleciona a operação desejada.
-4. O administrador informa os dados do profissional ou seleciona um registro existente.
-5. O sistema valida as informações.
-6. O administrador confirma a operação.
-7. O sistema registra ou atualiza as informações.
-8. O sistema informa o resultado.
+1. O administrador solicita a consulta dos profissionais cadastrados.
+2. O sistema apresenta as informações administrativas dos profissionais.
+3. O administrador realiza a manutenção das informações, quando necessário.
+4. O sistema registra as alterações realizadas.
 
-**Fluxos alternativos:**
+**Fluxos alternativos:** Não especificados no documento.
 
-**FA01 — Dados inválidos**
-1. O sistema identifica dados inválidos ou incompletos.
-2. O sistema solicita a correção.
-3. O administrador ajusta as informações.
-
-**FA02 — Profissional não encontrado**
-1. O sistema não localiza o registro pesquisado.
-2. O sistema informa que não encontrou o profissional.
-
-**Exceções:**
-- Se ocorrer uma falha técnica ao salvar os dados, o sistema informa que a operação não foi concluída.
+**Exceções:** Não especificadas no documento.
 
 **Pós-condições:**
-- O registro do profissional é criado ou atualizado, conforme a operação concluída.
+- As informações administrativas dos profissionais permanecem disponíveis e atualizadas conforme as alterações realizadas.
 
----
+## UC-07 — Vincular psicólogo à unidade
 
-## UC07 — Vincular psicólogo à unidade
-
-**Requisito relacionado:** RF-007.
-
+**Requisito relacionado:** RF-007 — Vincular psicólogo à unidade  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador associe um psicólogo a uma unidade da organização.
+**Objetivo:** Permitir ao administrador criar e encerrar vínculos profissionais entre psicólogos e unidades.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado.
-- O psicólogo está cadastrado.
-- A unidade está cadastrada.
+- O administrador está autorizado a gerenciar vínculos profissionais.
 
 **Fluxo principal:**
-1. O administrador acessa a funcionalidade de vinculação.
-2. O sistema apresenta os psicólogos e as unidades disponíveis.
-3. O administrador seleciona o psicólogo.
-4. O administrador seleciona a unidade.
-5. O sistema verifica as informações da vinculação.
-6. O administrador confirma a operação.
-7. O sistema registra a associação.
-8. O sistema informa que a vinculação foi concluída.
+1. O administrador solicita a criação ou o encerramento de um vínculo entre psicólogo e unidade.
+2. O sistema realiza a operação solicitada.
+3. O sistema preserva o histórico do vínculo.
 
 **Fluxos alternativos:**
-
-**FA01 — Dados não localizados**
-1. O sistema não encontra o psicólogo ou a unidade selecionada.
-2. O sistema informa que não foi possível realizar a vinculação.
-3. O administrador pode selecionar outros registros.
-
-**FA02 — Vinculação já existente**
-1. O sistema identifica que a associação já está registrada.
-2. O sistema informa que não é necessária uma nova vinculação.
+- O administrador pode criar um vínculo ou encerrar um vínculo existente.
 
 **Exceções:**
-- Se ocorrer uma falha ao salvar a associação, o sistema informa que a operação não foi concluída.
+- O sistema não deve permitir vínculo ativo duplicado entre o mesmo psicólogo e a mesma unidade (CA-002.5).
 
 **Pós-condições:**
-- O psicólogo fica vinculado à unidade selecionada.
+- O vínculo é criado ou encerrado.
+- O histórico do vínculo permanece registrado, conforme RN-003.
 
----
+## UC-08 — Consultar profissionais por unidade
 
-## UC08 — Consultar profissionais por unidade
-
-**Requisito relacionado:** RF-008.
-
+**Requisito relacionado:** RF-008 — Consultar profissionais por unidade  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador consulte os profissionais associados a uma unidade.
+**Objetivo:** Permitir ao administrador consultar os profissionais vinculados a determinada unidade.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado a consultar os profissionais.
+- O administrador possui autorização para consultar as informações.
 
 **Fluxo principal:**
-1. O administrador acessa a consulta de profissionais por unidade.
-2. O sistema apresenta as unidades disponíveis.
-3. O administrador seleciona uma unidade.
-4. O sistema consulta os profissionais vinculados.
-5. O sistema apresenta os resultados.
+1. O administrador solicita a consulta de profissionais por unidade.
+2. Seleciona a unidade desejada.
+3. O sistema apresenta os profissionais vinculados à unidade.
 
-**Fluxos alternativos:**
+**Fluxos alternativos:** Não especificados no documento.
 
-**FA01 — Nenhum profissional vinculado**
-1. O sistema não encontra profissionais associados à unidade.
-2. O sistema informa que não há profissionais vinculados àquela unidade.
-
-**Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível apresentar os resultados.
+**Exceções:** Não especificadas no documento.
 
 **Pós-condições:**
-- Os profissionais vinculados à unidade selecionada são apresentados, quando existentes.
+- Os profissionais vinculados à unidade selecionada são apresentados ao administrador.
 
----
+## UC-09 — Visualizar painel geral
 
-## UC09 — Visualizar painel geral
-
-**Requisito relacionado:** RF-009.
-
+**Requisito relacionado:** RF-009 — Visualizar painel geral  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador consulte informações gerais sobre a operação da organização.
+**Objetivo:** Disponibilizar uma visão consolidada da organização.
 
 **Pré-condições:**
-- O administrador está autenticado e autorizado a visualizar o painel.
+- O administrador está autorizado a consultar o painel geral.
 
 **Fluxo principal:**
-1. O administrador acessa o painel geral.
-2. O sistema consulta as informações operacionais previstas no escopo.
-3. O sistema organiza as informações.
-4. O sistema apresenta os dados disponíveis ao administrador.
+1. O administrador solicita a visualização do painel geral.
+2. O sistema apresenta informações consolidadas sobre profissionais, pacientes e atendimentos.
+3. Quando aplicável, o administrador filtra as informações por unidade e período.
 
 **Fluxos alternativos:**
+- O administrador pode selecionar filtros por unidade e período, quando aplicáveis.
 
-**FA01 — Não há dados disponíveis**
-1. O sistema identifica que não há dados para apresentar em determinado indicador.
-2. O sistema informa que não existem dados disponíveis para esse item.
-
-**Exceções:**
-- Se ocorrer uma falha ao consultar as informações, o sistema informa que não foi possível carregar o painel.
+**Exceções:** Não especificadas no documento.
 
 **Pós-condições:**
-- As informações gerais disponíveis são apresentadas ao administrador.
+- As informações consolidadas são apresentadas conforme os filtros utilizados.
 
----
+## UC-10 — Cadastrar paciente
 
-## UC10 — Cadastrar paciente
+**Requisito relacionado:** RF-010 — Cadastrar paciente  
+**Ator principal:** Recepcionista/atendente.
 
-**Requisito relacionado:** RF-010.
-
-**Ator principal:** Recepcionista.
-
-**Objetivo:** Permitir que a recepcionista registre os dados administrativos de um paciente na plataforma.
+**Objetivo:** Permitir o cadastro dos dados administrativos básicos de um novo paciente durante o processo de agendamento.
 
 **Pré-condições:**
-- A recepcionista está autenticada e autorizada a cadastrar pacientes.
+- A recepcionista está autorizada a realizar o cadastro administrativo de pacientes.
 
 **Fluxo principal:**
-1. A recepcionista acessa a funcionalidade de cadastro de pacientes.
-2. O sistema apresenta o formulário.
-3. A recepcionista preenche os dados administrativos solicitados.
-4. O sistema valida os dados informados.
-5. A recepcionista confirma o cadastro.
-6. O sistema registra o paciente.
-7. O sistema informa que o cadastro foi realizado.
+1. A recepcionista pesquisa se o paciente já está cadastrado.
+2. Quando não há registro correspondente, informa os dados administrativos obrigatórios.
+3. O sistema cadastra o paciente.
+4. O cadastro fica disponível para utilização no processo de agendamento.
 
 **Fluxos alternativos:**
-
-**FA01 — Dados incompletos ou inválidos**
-1. O sistema identifica informações obrigatórias ausentes ou inválidas.
-2. O sistema informa quais dados precisam ser corrigidos.
-3. A recepcionista corrige as informações.
-4. O sistema valida novamente os dados.
-
-**FA02 — Possível cadastro duplicado**
-1. O sistema identifica um possível registro existente com dados correspondentes.
-2. O sistema informa a situação à recepcionista.
-3. A recepcionista verifica o registro antes de prosseguir, conforme as regras definidas pela equipe.
+- Se o paciente já estiver cadastrado, a recepcionista poderá utilizar o cadastro existente, sem criar outro desnecessariamente.
 
 **Exceções:**
-- Se ocorrer uma falha técnica ao salvar o cadastro, o sistema informa que a operação não foi concluída.
+- O sistema deve adotar validações para reduzir cadastros duplicados (CA-005.5).
+- O comportamento específico para dados inválidos não está detalhado no documento.
 
 **Pós-condições:**
-- Em caso de sucesso, o paciente fica registrado na plataforma.
+- O paciente fica cadastrado e disponível para o processo de agendamento.
 
----
+## UC-11 — Pesquisar paciente
 
-## UC11 — Pesquisar paciente
+**Requisito relacionado:** RF-011 — Pesquisar paciente  
+**Ator principal:** Recepcionista/atendente.
 
-**Requisito relacionado:** RF-011.
-
-**Ator principal:** Recepcionista.
-
-**Objetivo:** Permitir que a recepcionista localize um paciente cadastrado.
+**Objetivo:** Permitir a localização de pacientes já cadastrados para reutilizar seus dados em novos agendamentos.
 
 **Pré-condições:**
-- A recepcionista está autenticada e autorizada a consultar os cadastros administrativos.
+- A recepcionista possui autorização para consultar os dados administrativos dos pacientes.
 
 **Fluxo principal:**
-1. A recepcionista acessa a pesquisa de pacientes.
-2. O sistema apresenta os campos de pesquisa disponíveis.
-3. A recepcionista informa os dados de busca.
-4. O sistema realiza a pesquisa.
-5. O sistema apresenta os registros correspondentes.
+1. A recepcionista solicita a pesquisa de um paciente.
+2. Informa os dados necessários para a pesquisa.
+3. O sistema pesquisa os cadastros existentes.
+4. O sistema apresenta o cadastro correspondente, quando localizado.
 
 **Fluxos alternativos:**
+- Se não houver registro correspondente, o sistema deverá permitir o cadastro de um novo paciente, conforme RF-010 e CA-005.2.
 
-**FA01 — Nenhum resultado encontrado**
-1. O sistema não localiza registros correspondentes.
-2. O sistema informa que nenhum paciente foi encontrado.
-3. A recepcionista pode realizar uma nova pesquisa.
-
-**Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível realizar a pesquisa.
+**Exceções:** O comportamento específico para pesquisas sem correspondência não está detalhado além da possibilidade de cadastrar um novo paciente.
 
 **Pós-condições:**
-- Os registros correspondentes são apresentados, se encontrados.
+- O cadastro localizado fica disponível para utilização no processo de agendamento.
 
----
+## UC-12 — Atualizar dados administrativos do paciente
 
-## UC12 — Atualizar dados administrativos do paciente
+**Requisito relacionado:** RF-012 — Atualizar dados administrativos do paciente  
+**Ator principal:** Recepcionista/atendente.
 
-**Requisito relacionado:** RF-012.
-
-**Ator principal:** Recepcionista.
-
-**Objetivo:** Permitir que a recepcionista atualize os dados administrativos de um paciente cadastrado.
+**Objetivo:** Permitir a atualização das informações administrativas autorizadas do paciente.
 
 **Pré-condições:**
-- A recepcionista está autenticada e autorizada.
-- O paciente está cadastrado no sistema.
+- A recepcionista possui autorização para atualizar os dados administrativos do paciente.
+- O cadastro do paciente está disponível para consulta.
+
+**Fluxo principal:**
+1. A recepcionista localiza o cadastro do paciente.
+2. Altera os dados administrativos para os quais possui autorização.
+3. O sistema registra as alterações.
+4. As informações atualizadas ficam disponíveis para consultas posteriores.
+
+**Fluxos alternativos:** Não especificados no documento.
+
+**Exceções:**
+- A recepcionista não pode visualizar ou modificar registros profissionais de atendimento (CA-006.3).
+- Tentativas de acesso a informações profissionais sem autorização devem ser negadas (CA-006.4).
+
+**Pós-condições:**
+- Os dados administrativos alterados ficam disponíveis para consultas posteriores.
+
+## UC-13 — Gerenciar disponibilidade
+
+**Requisito relacionado:** RF-013 — Gerenciar disponibilidade  
+**Ator principal:** Psicólogo.
+
+**Objetivo:** Permitir ao psicólogo cadastrar e alterar seus períodos de disponibilidade nas unidades às quais possui vínculo ativo.
+
+**Pré-condições:**
+- O psicólogo possui vínculo ativo com a unidade na qual deseja cadastrar ou alterar a disponibilidade.
+
+**Fluxo principal:**
+1. O psicólogo solicita o gerenciamento de sua disponibilidade.
+2. Informa os períodos em que está disponível para atendimento.
+3. O sistema verifica a validade da disponibilidade.
+4. O sistema registra a disponibilidade cadastrada ou alterada.
+
+**Fluxos alternativos:**
+- O psicólogo pode cadastrar uma nova disponibilidade ou alterar uma disponibilidade futura.
+
+**Exceções:**
+- O sistema deve impedir o cadastro de uma disponibilidade inválida, como horário final anterior ao horário inicial (CA-010.4).
+
+**Pós-condições:**
+- A disponibilidade fica cadastrada ou atualizada.
+- A alteração da disponibilidade não elimina automaticamente consultas já agendadas (CA-010.3).
+
+## UC-14 — Consultar agenda do psicólogo
+
+**Requisito relacionado:** RF-014 — Consultar agenda do psicólogo  
+**Ator principal:** Psicólogo.
+
+**Objetivo:** Permitir ao psicólogo consultar sua agenda, incluindo horários disponíveis e consultas agendadas.
+
+**Pré-condições:**
+- O psicólogo possui autorização para consultar sua própria agenda.
+
+**Fluxo principal:**
+1. O psicólogo solicita a consulta da agenda.
+2. O sistema apresenta seus horários disponíveis e suas consultas agendadas.
+3. A agenda permite identificar data, horário, unidade e paciente relacionados a cada consulta autorizada.
+
+**Fluxos alternativos:** Não especificados no documento.
+
+**Exceções:**
+- O psicólogo não deve alterar diretamente consultas já agendadas por meio dessa função (CA-011.3).
+
+**Pós-condições:**
+- A agenda do psicólogo é apresentada para consulta.
+
+## UC-15 — Consultar disponibilidade para agendamento
+
+**Requisitos relacionados:** RF-015 — Consultar disponibilidade para agendamento; RF-020 — Validar disponibilidade; RF-021 — Impedir conflito de agenda.  
+**Ator principal:** Recepcionista/atendente.
+
+**Objetivo:** Permitir que a recepcionista consulte os horários disponíveis dos psicólogos nas respectivas unidades.
+
+**Pré-condições:**
+- A recepcionista possui autorização para consultar as disponibilidades necessárias ao agendamento.
+
+**Fluxo principal:**
+1. A recepcionista seleciona uma unidade.
+2. O sistema apresenta os psicólogos vinculados à unidade.
+3. O sistema apresenta os períodos disponíveis de cada psicólogo.
+4. O sistema não apresenta como disponíveis os horários ocupados por agendamentos ativos.
+
+**Fluxos alternativos:** Não especificados no documento.
+
+**Exceções:** Não especificadas além das restrições de disponibilidade e conflito de agenda definidas nos requisitos.
+
+**Pós-condições:**
+- Os horários disponíveis ficam apresentados para consulta e utilização no agendamento.
+
+## UC-16 — Realizar agendamento
+
+**Requisitos relacionados:** RF-016, RF-020, RF-021 e RF-022.  
+**Ator principal:** Recepcionista/atendente.
+
+**Objetivo:** Registrar uma consulta relacionando paciente, psicólogo, unidade, data e horário.
+
+**Pré-condições:**
+- A recepcionista está autenticada e possui permissão para agendar.
+- O paciente está cadastrado ou será cadastrado durante o processo.
+- O psicólogo possui vínculo ativo com a unidade escolhida.
+- O psicólogo possui disponibilidade cadastrada para a unidade.
 
 **Fluxo principal:**
 1. A recepcionista pesquisa o paciente.
-2. O sistema apresenta os resultados.
-3. A recepcionista seleciona o paciente.
-4. O sistema apresenta os dados administrativos cadastrados.
-5. A recepcionista modifica as informações necessárias.
-6. O sistema valida os dados.
-7. A recepcionista confirma a alteração.
-8. O sistema salva as informações atualizadas.
-9. O sistema informa que a operação foi concluída.
+2. Se necessário, realiza o cadastro do paciente.
+3. Seleciona o paciente, o psicólogo, a unidade, a data e o horário.
+4. O sistema verifica se os dados necessários estão definidos.
+5. O sistema verifica se o psicólogo possui disponibilidade compatível com a unidade, a data e o horário.
+6. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
+7. Se as validações forem atendidas, o sistema registra o agendamento.
+8. O sistema disponibiliza a consulta na agenda do psicólogo.
+9. O horário deixa de aparecer como disponível.
+10. Se for o primeiro agendamento válido entre o paciente e o psicólogo, o sistema estabelece o vínculo entre ambos, caso ainda não exista.
 
 **Fluxos alternativos:**
-
-**FA01 — Paciente não encontrado**
-1. O sistema não localiza o paciente.
-2. O sistema informa que não encontrou o registro.
-3. A recepcionista pode realizar uma nova pesquisa.
-
-**FA02 — Dados inválidos**
-1. O sistema identifica dados inválidos ou incompletos.
-2. O sistema solicita a correção.
-3. A recepcionista ajusta as informações.
-
-**FA03 — Alteração cancelada**
-1. A recepcionista desiste antes de confirmar.
-2. O sistema descarta as alterações não salvas.
+- **FA-01 — Paciente ainda não cadastrado:** a recepcionista realiza o cadastro e utiliza os dados no agendamento.
+- **FA-02 — Vínculo paciente–psicólogo inexistente:** após a conclusão do primeiro agendamento válido, o sistema estabelece o vínculo entre ambos.
 
 **Exceções:**
-- Se ocorrer uma falha ao salvar os dados, o sistema informa que a operação não foi concluída.
+- **E-01 — Dados necessários não definidos:** o agendamento não pode ser concluído se paciente, psicólogo, unidade, data ou horário não estiverem definidos (CA-008.1).
+- **E-02 — Vínculo profissional inválido:** o agendamento não pode ser concluído se o psicólogo não possuir vínculo ativo com a unidade selecionada (CA-008.2).
+- **E-03 — Indisponibilidade:** o agendamento não pode ser concluído se o horário não estiver dentro da disponibilidade cadastrada para o psicólogo e a unidade (CA-008.3).
+- **E-04 — Conflito de horário:** o sistema impede o agendamento conflitante com outro agendamento ativo do mesmo psicólogo (CA-008.4).
 
 **Pós-condições:**
-- Em caso de sucesso, os dados administrativos são atualizados.
-- Os registros profissionais de atendimento não são alterados por essa funcionalidade.
+- O agendamento é registrado com paciente, psicólogo, unidade, data e horário.
+- A consulta aparece na agenda do psicólogo.
+- O horário correspondente deixa de aparecer como disponível.
+- O vínculo paciente–psicólogo é criado quando se trata do primeiro agendamento válido e ainda não existe vínculo.
 
----
+## UC-17 — Confirmar agendamento
 
-## UC13 — Gerenciar disponibilidade
+**Requisito relacionado:** RF-017 — Confirmar agendamento  
+**Ator principal:** Recepcionista/atendente.
 
-**Requisito relacionado:** RF-013.
+**Objetivo:** Permitir a confirmação de uma consulta previamente agendada.
 
+**Pré-condições:**
+- Existe um agendamento.
+- A recepcionista possui autorização para realizar a confirmação.
+
+**Fluxo principal:**
+1. A recepcionista solicita a confirmação de um agendamento existente.
+2. O sistema registra a confirmação do agendamento.
+
+**Fluxos alternativos:** Não especificados no documento.
+
+**Exceções:** As situações específicas em que a confirmação deve ser impedida não estão detalhadas no documento.
+
+**Pós-condições:**
+- O agendamento fica confirmado.
+
+## UC-18 — Cancelar agendamento
+
+**Requisito relacionado:** RF-018 — Cancelar agendamento  
+**Ator principal:** Recepcionista/atendente.
+
+**Objetivo:** Permitir o cancelamento de uma consulta agendada.
+
+**Pré-condições:**
+- Existe um agendamento.
+- A operação é realizada por usuário administrativo autorizado.
+
+**Fluxo principal:**
+1. A recepcionista solicita o cancelamento de um agendamento.
+2. O sistema verifica as permissões aplicáveis.
+3. O sistema registra o cancelamento do agendamento.
+
+**Fluxos alternativos:** Não especificados no documento.
+
+**Exceções:**
+- O cancelamento deve respeitar as regras e permissões aplicáveis ao agendamento.
+
+**Pós-condições:**
+- O agendamento fica cancelado.
+
+## UC-19 — Reagendar consulta
+
+**Requisito relacionado:** RF-019 — Reagendar consulta  
+**Ator principal:** Recepcionista/atendente.
+
+**Objetivo:** Permitir a alteração da data ou do horário de uma consulta por meio de reagendamento.
+
+**Pré-condições:**
+- Existe um agendamento.
+- A operação é realizada por usuário administrativo autorizado.
+
+**Fluxo principal:**
+1. A recepcionista solicita o reagendamento de uma consulta.
+2. Informa a nova data ou o novo horário.
+3. O sistema verifica novamente a unidade, o vínculo profissional, a disponibilidade e os conflitos de horário.
+4. Se as validações forem atendidas, o sistema registra o reagendamento.
+
+**Fluxos alternativos:** Não especificados no documento.
+
+**Exceções:**
+- O reagendamento não pode ser concluído para horário que não atenda às validações de unidade, vínculo, disponibilidade e conflito de agenda (CA-009.4).
+
+**Pós-condições:**
+- A consulta fica reagendada para a data ou o horário válido informado.
+
+## UC-20 — Consultar pacientes vinculados
+
+**Requisito relacionado:** RF-023 — Consultar pacientes vinculados  
 **Ator principal:** Psicólogo.
 
-**Objetivo:** Permitir que o psicólogo gerencie sua disponibilidade para atendimentos.
+**Objetivo:** Permitir ao psicólogo consultar os pacientes aos quais possui vínculo autorizado.
 
 **Pré-condições:**
-- O psicólogo está autenticado e autorizado a gerenciar sua disponibilidade.
-- O psicólogo possui cadastro e vínculo profissional conforme as regras da organização.
+- O psicólogo possui autorização para acessar os pacientes consultados.
 
 **Fluxo principal:**
-1. O psicólogo acessa a funcionalidade de disponibilidade.
-2. O sistema apresenta as informações de disponibilidade existentes.
-3. O psicólogo seleciona a operação desejada.
-4. O psicólogo informa ou modifica os horários disponíveis.
-5. O sistema verifica as informações.
-6. O psicólogo confirma a operação.
-7. O sistema registra a disponibilidade.
-8. O sistema informa o resultado.
+1. O psicólogo solicita a consulta dos pacientes vinculados.
+2. O sistema verifica os vínculos e as permissões aplicáveis.
+3. O sistema apresenta os pacientes aos quais o psicólogo possui vínculo autorizado.
 
-**Fluxos alternativos:**
-
-**FA01 — Horários inválidos**
-1. O sistema identifica informações de horário inválidas.
-2. O sistema informa que os dados precisam ser corrigidos.
-3. O psicólogo ajusta os horários.
-
-**FA02 — Operação cancelada**
-1. O psicólogo desiste antes da confirmação.
-2. O sistema mantém a disponibilidade anterior.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha ao salvar a disponibilidade, o sistema informa que a operação não foi concluída.
+- Pacientes sem vínculo autorizado não devem ter seus registros profissionais disponibilizados ao psicólogo (CA-012.2).
 
 **Pós-condições:**
-- A disponibilidade é atualizada conforme a operação concluída.
+- Os pacientes autorizados ficam disponíveis para consulta.
+- O histórico dos vínculos encerrados permanece preservado.
 
----
+## UC-21 — Registrar atendimento
 
-## UC14 — Consultar agenda do psicólogo
-
-**Requisito relacionado:** RF-014.
-
+**Requisito relacionado:** RF-024 — Registrar atendimento  
 **Ator principal:** Psicólogo.
 
-**Objetivo:** Permitir que o psicólogo consulte sua própria agenda.
+**Objetivo:** Permitir o registro de informações profissionais referentes a uma consulta realizada.
 
 **Pré-condições:**
-- O psicólogo está autenticado e autorizado.
-- O psicólogo possui agenda vinculada ao seu cadastro.
+- A consulta correspondente foi realizada.
+- O psicólogo está autorizado a registrar o atendimento sob sua responsabilidade.
 
 **Fluxo principal:**
-1. O psicólogo acessa a agenda.
-2. O sistema consulta os agendamentos associados ao psicólogo.
-3. O sistema apresenta os compromissos conforme o período selecionado.
+1. O psicólogo seleciona a consulta realizada.
+2. Solicita o registro do atendimento.
+3. O sistema disponibiliza o preenchimento das informações profissionais previstas.
+4. O psicólogo preenche as informações do atendimento.
+5. O sistema salva o registro e o associa ao psicólogo e ao paciente correspondentes.
+6. O atendimento passa a integrar o histórico do paciente.
 
-**Fluxos alternativos:**
-
-**FA01 — Agenda sem agendamentos**
-1. O sistema não encontra compromissos no período consultado.
-2. O sistema informa que não há agendamentos para o período.
-
-**FA02 — Consulta de outro período**
-1. O psicólogo seleciona outro período.
-2. O sistema consulta e apresenta os agendamentos correspondentes.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível carregar a agenda.
+- O sistema não permite registrar atendimento relacionado a consulta que não tenha sido realizada (CA-013.1).
+- Outro usuário sem autorização profissional não deve visualizar o conteúdo detalhado do atendimento (CA-013.5).
 
 **Pós-condições:**
-- A agenda correspondente ao período solicitado é apresentada ao psicólogo.
+- O atendimento fica registrado e associado ao psicólogo e ao paciente correspondentes.
+- O atendimento integra o histórico do paciente.
 
----
+## UC-22 — Consultar histórico de atendimentos
 
-## UC15 — Consultar disponibilidade
-
-**Requisito relacionado:** RF-015.
-
-**Ator principal:** Recepcionista.
-
-**Objetivo:** Permitir que a recepcionista consulte os horários disponíveis para agendamento.
-
-**Pré-condições:**
-- A recepcionista está autenticada e autorizada a consultar disponibilidades.
-- Existem informações de disponibilidade registradas para a consulta solicitada.
-
-**Fluxo principal:**
-1. A recepcionista acessa a consulta de disponibilidade.
-2. O sistema apresenta os critérios de pesquisa.
-3. A recepcionista informa os critérios desejados.
-4. O sistema consulta as disponibilidades correspondentes.
-5. O sistema apresenta os horários encontrados.
-
-**Fluxos alternativos:**
-
-**FA01 — Nenhum horário disponível**
-1. O sistema não encontra horários correspondentes aos critérios.
-2. O sistema informa que não há horários disponíveis.
-3. A recepcionista pode modificar os critérios da pesquisa.
-
-**Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível obter a disponibilidade.
-
-**Pós-condições:**
-- Os horários disponíveis encontrados são apresentados para consulta.
-
----
-
-## UC16 — Realizar agendamento
-
-**Requisito relacionado:** RF-016, com validações relacionadas aos RF-020 a RF-022.
-
-**Ator principal:** Recepcionista.
-
-**Objetivo:** Permitir que a recepcionista registre um agendamento para um paciente.
-
-**Pré-condições:**
-- A recepcionista está autenticada e autorizada a realizar agendamentos.
-- O paciente está cadastrado.
-- Há informações de disponibilidade para consulta.
-
-**Fluxo principal:**
-1. A recepcionista acessa a funcionalidade de agendamento.
-2. O sistema solicita os dados necessários para a consulta.
-3. A recepcionista pesquisa e seleciona o paciente.
-4. A recepcionista consulta e seleciona o profissional e o horário desejado.
-5. O sistema verifica as regras de agendamento aplicáveis.
-6. O sistema apresenta os dados do agendamento para conferência.
-7. A recepcionista confirma a operação.
-8. O sistema registra o agendamento.
-9. O sistema informa que o agendamento foi realizado.
-
-**Fluxos alternativos:**
-
-**FA01 — Paciente não encontrado**
-1. O sistema não localiza o paciente.
-2. O sistema informa que o registro não foi encontrado.
-3. A recepcionista pode realizar uma nova pesquisa.
-
-**FA02 — Horário indisponível**
-1. O sistema identifica que o horário não está disponível.
-2. O sistema informa que não é possível realizar o agendamento naquele horário.
-3. A recepcionista consulta outras disponibilidades.
-
-**FA03 — Dados inválidos**
-1. O sistema identifica dados inválidos ou incompatíveis com as regras de agendamento.
-2. O sistema informa o problema.
-3. A recepcionista corrige os dados ou seleciona outra opção.
-
-**FA04 — Agendamento cancelado antes da confirmação**
-1. A recepcionista desiste antes de confirmar.
-2. O sistema não registra o agendamento.
-
-**Exceções:**
-- Se ocorrer uma falha ao salvar o agendamento, o sistema informa que a operação não foi concluída.
-
-**Pós-condições:**
-- Em caso de sucesso, o agendamento fica registrado com a situação definida pelas regras do projeto.
-
-**Observação:** A situação inicial do agendamento e as validações exatas dos RF-020 a RF-022 precisam seguir o documento oficial de requisitos.
-
----
-
-## UC17 — Confirmar agendamento
-
-**Requisito relacionado:** RF-017.
-
-**Ator principal:** Recepcionista, sujeito à confirmação da permissão pela equipe.
-
-**Objetivo:** Permitir a confirmação de um agendamento existente, caso essa ação esteja autorizada para a recepção.
-
-**Pré-condições:**
-- O usuário está autenticado e autorizado a realizar a operação.
-- O agendamento está registrado.
-- O agendamento está em uma situação que permite confirmação, conforme as regras do sistema.
-
-**Fluxo principal:**
-1. A recepcionista acessa os agendamentos.
-2. O sistema apresenta os registros disponíveis para consulta.
-3. A recepcionista localiza e seleciona o agendamento.
-4. O sistema apresenta os dados do agendamento.
-5. A recepcionista solicita a confirmação.
-6. O sistema verifica se a operação é permitida.
-7. O sistema atualiza a situação do agendamento.
-8. O sistema informa que a confirmação foi realizada.
-
-**Fluxos alternativos:**
-
-**FA01 — Agendamento não encontrado**
-1. O sistema não localiza o registro.
-2. O sistema informa que o agendamento não foi encontrado.
-
-**FA02 — Situação não permite confirmação**
-1. O sistema identifica que o agendamento não pode ser confirmado naquela situação.
-2. O sistema informa que a operação não pode ser realizada.
-
-**Exceções:**
-- Se ocorrer uma falha na atualização, o sistema informa que a confirmação não foi concluída.
-
-**Pós-condições:**
-- Em caso de sucesso, a situação do agendamento é atualizada.
-
-**Pendência:** Confirmar com a equipe se a recepção pode executar essa operação e quais situações permitem a confirmação.
-
----
-
-## UC18 — Cancelar agendamento
-
-**Requisito relacionado:** RF-018.
-
-**Ator principal:** Recepcionista, sujeito à confirmação da permissão pela equipe.
-
-**Objetivo:** Permitir o cancelamento de um agendamento, caso essa ação esteja autorizada para a recepção.
-
-**Pré-condições:**
-- O usuário está autenticado e autorizado.
-- O agendamento está registrado.
-- A situação do agendamento permite cancelamento, conforme as regras definidas.
-
-**Fluxo principal:**
-1. A recepcionista acessa os agendamentos.
-2. O sistema apresenta os registros disponíveis.
-3. A recepcionista localiza e seleciona o agendamento.
-4. O sistema apresenta os dados do agendamento.
-5. A recepcionista solicita o cancelamento.
-6. O sistema verifica se a operação é permitida.
-7. O sistema solicita a confirmação, se aplicável.
-8. A recepcionista confirma o cancelamento.
-9. O sistema atualiza a situação do agendamento.
-10. O sistema informa o resultado.
-
-**Fluxos alternativos:**
-
-**FA01 — Cancelamento desistido**
-1. A recepcionista desiste antes de confirmar.
-2. O sistema mantém a situação anterior do agendamento.
-
-**FA02 — Agendamento não encontrado**
-1. O sistema não localiza o registro.
-2. O sistema informa que o agendamento não foi encontrado.
-
-**FA03 — Cancelamento não permitido**
-1. O sistema identifica que a situação do agendamento não permite cancelamento.
-2. O sistema informa que a operação não pode ser realizada.
-
-**Exceções:**
-- Se ocorrer uma falha na atualização, o sistema informa que o cancelamento não foi concluído.
-
-**Pós-condições:**
-- Em caso de sucesso, o agendamento fica com a situação correspondente ao cancelamento.
-
-**Pendência:** Confirmar com a equipe a permissão da recepção e as regras de cancelamento.
-
----
-
-## UC19 — Reagendar consulta
-
-**Requisito relacionado:** RF-019.
-
-**Ator principal:** Recepcionista, sujeito à confirmação da permissão pela equipe.
-
-**Objetivo:** Permitir a alteração da data ou do horário de uma consulta agendada, caso essa ação esteja autorizada para a recepção.
-
-**Pré-condições:**
-- O usuário está autenticado e autorizado.
-- O agendamento está registrado.
-- Existe disponibilidade para a nova data ou horário pretendido.
-
-**Fluxo principal:**
-1. A recepcionista acessa os agendamentos.
-2. O sistema apresenta os registros disponíveis.
-3. A recepcionista localiza e seleciona a consulta.
-4. O sistema apresenta os dados do agendamento.
-5. A recepcionista solicita o reagendamento.
-6. O sistema apresenta os critérios para escolha de uma nova data ou horário.
-7. A recepcionista seleciona a nova opção.
-8. O sistema verifica a disponibilidade e as regras aplicáveis.
-9. O sistema apresenta os novos dados para conferência.
-10. A recepcionista confirma a operação.
-11. O sistema atualiza o agendamento.
-12. O sistema informa que o reagendamento foi realizado.
-
-**Fluxos alternativos:**
-
-**FA01 — Novo horário indisponível**
-1. O sistema identifica que o horário escolhido não está disponível.
-2. O sistema informa a indisponibilidade.
-3. A recepcionista seleciona outra opção.
-
-**FA02 — Agendamento não encontrado**
-1. O sistema não localiza o registro.
-2. O sistema informa que o agendamento não foi encontrado.
-
-**FA03 — Operação cancelada**
-1. A recepcionista desiste antes da confirmação.
-2. O sistema mantém o agendamento anterior.
-
-**Exceções:**
-- Se ocorrer uma falha ao salvar a alteração, o sistema informa que o reagendamento não foi concluído.
-
-**Pós-condições:**
-- Em caso de sucesso, o agendamento fica atualizado para a nova data ou horário.
-
-**Pendência:** Confirmar com a equipe se a recepção pode realizar o reagendamento e quais regras devem ser aplicadas.
-
----
-
-## UC20 — Consultar pacientes vinculados
-
-**Requisito relacionado:** RF-023.
-
+**Requisito relacionado:** RF-025 — Consultar histórico de atendimentos  
 **Ator principal:** Psicólogo.
 
-**Objetivo:** Permitir que o psicólogo consulte os pacientes aos quais está autorizado e vinculado.
+**Objetivo:** Permitir a consulta cronológica e detalhada dos atendimentos dos pacientes aos quais o psicólogo possui acesso autorizado.
 
 **Pré-condições:**
-- O psicólogo está autenticado.
-- O psicólogo possui autorização para consultar seus pacientes vinculados.
+- O psicólogo possui vínculo ou autorização adequada para consultar o histórico do paciente.
 
 **Fluxo principal:**
-1. O psicólogo acessa a funcionalidade de pacientes vinculados.
-2. O sistema identifica o psicólogo autenticado.
-3. O sistema consulta os pacientes associados a esse profissional e autorizados para seu acesso.
-4. O sistema apresenta os pacientes encontrados.
+1. O psicólogo solicita a consulta do histórico de atendimentos de um paciente autorizado.
+2. O sistema apresenta os atendimentos em ordem cronológica.
+3. O sistema permite acessar as informações detalhadas correspondentes a cada atendimento.
 
-**Fluxos alternativos:**
-
-**FA01 — Nenhum paciente vinculado**
-1. O sistema não encontra pacientes vinculados ao psicólogo.
-2. O sistema informa que não há pacientes vinculados para apresentar.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível carregar os registros.
+- O sistema não disponibiliza ao psicólogo o histórico profissional de pacientes para os quais não possua vínculo ou autorização adequada (CA-014.4).
 
 **Pós-condições:**
-- O psicólogo visualiza somente os pacientes que está autorizado a consultar.
+- O histórico autorizado fica disponível para consulta.
 
----
+## UC-23 — Corrigir registro de atendimento
 
-## UC21 — Registrar atendimento
-
-**Requisito relacionado:** RF-024.
-
+**Requisito relacionado:** RF-026 — Corrigir registro de atendimento  
 **Ator principal:** Psicólogo.
 
-**Objetivo:** Permitir que o psicólogo registre informações de um atendimento realizado.
+**Objetivo:** Permitir a correção de registros de atendimento sob responsabilidade do psicólogo, preservando a rastreabilidade das alterações.
 
 **Pré-condições:**
-- O psicólogo está autenticado e autorizado a registrar atendimentos.
-- O paciente está vinculado ao psicólogo e autorizado para seu acesso.
+- Existe um registro de atendimento.
+- O psicólogo possui autorização para corrigir o registro sob sua responsabilidade.
 
 **Fluxo principal:**
-1. O psicólogo acessa os pacientes vinculados.
-2. O sistema apresenta os pacientes disponíveis para consulta.
-3. O psicólogo seleciona o paciente atendido.
-4. O sistema apresenta as opções de registro de atendimento.
-5. O psicólogo informa os dados solicitados para o registro.
-6. O sistema valida as informações.
-7. O psicólogo confirma o registro.
-8. O sistema salva o atendimento.
-9. O sistema informa que o registro foi realizado.
+1. O psicólogo seleciona o registro de atendimento que deseja corrigir.
+2. Realiza as alterações necessárias.
+3. O sistema registra a alteração e identifica o responsável e o momento da operação.
+4. O sistema mantém a rastreabilidade da versão ou alteração anterior.
+5. A versão vigente fica disponível no histórico do paciente.
 
-**Fluxos alternativos:**
-
-**FA01 — Dados incompletos ou inválidos**
-1. O sistema identifica informações obrigatórias ausentes ou inválidas.
-2. O sistema informa quais dados precisam ser corrigidos.
-3. O psicólogo corrige as informações.
-
-**FA02 — Paciente não autorizado**
-1. O sistema identifica que o psicólogo não possui autorização para acessar o paciente selecionado.
-2. O sistema impede o registro.
-3. O sistema informa que a operação não pode ser realizada.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha ao salvar o atendimento, o sistema informa que o registro não foi concluído.
+- Outro psicólogo sem autorização sobre o atendimento não pode modificar o registro (CA-015.4).
 
 **Pós-condições:**
-- Em caso de sucesso, o atendimento fica registrado no histórico do paciente.
+- A versão vigente do registro fica disponível no histórico.
+- A rastreabilidade da alteração anterior é preservada.
 
----
+## UC-24 — Consultar auditoria
 
-## UC22 — Consultar histórico de atendimentos
-
-**Requisito relacionado:** RF-025.
-
-**Ator principal:** Psicólogo.
-
-**Objetivo:** Permitir que o psicólogo consulte o histórico cronológico dos atendimentos dos pacientes aos quais está vinculado e autorizado.
-
-**Pré-condições:**
-- O psicólogo está autenticado.
-- O paciente está vinculado ao psicólogo e autorizado para seu acesso.
-
-**Fluxo principal:**
-1. O psicólogo acessa a lista de pacientes vinculados.
-2. O psicólogo seleciona um paciente.
-3. O sistema verifica a autorização de acesso.
-4. O psicólogo solicita o histórico de atendimentos.
-5. O sistema consulta os registros disponíveis.
-6. O sistema apresenta o histórico em ordem cronológica.
-
-**Fluxos alternativos:**
-
-**FA01 — Histórico vazio**
-1. O sistema não encontra registros de atendimento para o paciente.
-2. O sistema informa que não há registros disponíveis.
-
-**FA02 — Paciente não autorizado**
-1. O sistema identifica que o paciente não está autorizado para acesso pelo psicólogo.
-2. O sistema impede a consulta.
-
-**Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível carregar o histórico.
-
-**Pós-condições:**
-- O histórico disponível é apresentado ao psicólogo autorizado.
-
----
-
-## UC23 — Corrigir registro de atendimento
-
-**Requisito relacionado:** RF-026.
-
-**Ator principal:** Psicólogo.
-
-**Objetivo:** Permitir que o psicólogo corrija um registro de atendimento de sua responsabilidade, respeitando as regras de acesso e auditoria.
-
-**Pré-condições:**
-- O psicólogo está autenticado e autorizado.
-- O registro de atendimento existe.
-- O registro pertence ao contexto profissional autorizado para o psicólogo.
-
-**Fluxo principal:**
-1. O psicólogo acessa o histórico de atendimentos.
-2. O sistema apresenta os registros disponíveis.
-3. O psicólogo seleciona o registro que deseja corrigir.
-4. O sistema apresenta as informações do registro.
-5. O psicólogo modifica os dados que precisam de correção.
-6. O sistema valida as informações.
-7. O psicólogo confirma a correção.
-8. O sistema salva as alterações.
-9. O sistema registra a ação de auditoria, conforme as regras aplicáveis.
-10. O sistema informa que a correção foi concluída.
-
-**Fluxos alternativos:**
-
-**FA01 — Registro não encontrado**
-1. O sistema não localiza o registro selecionado.
-2. O sistema informa que o registro não foi encontrado.
-
-**FA02 — Dados inválidos**
-1. O sistema identifica dados inválidos.
-2. O sistema solicita a correção.
-3. O psicólogo ajusta as informações.
-
-**FA03 — Correção cancelada**
-1. O psicólogo desiste antes de confirmar.
-2. O sistema descarta as alterações não salvas.
-
-**Exceções:**
-- Se ocorrer uma falha ao salvar a correção, o sistema informa que a operação não foi concluída.
-
-**Pós-condições:**
-- Em caso de sucesso, o registro fica atualizado.
-- A correção deve respeitar as regras de auditoria definidas para o sistema.
-
----
-
-## UC24 — Registrar auditoria
-
-**Requisito relacionado:** RF-028.
-
-**Ator principal:** Sistema.
-
-**Objetivo:** Registrar ações relevantes realizadas na plataforma para permitir rastreabilidade das operações.
-
-**Pré-condições:**
-- O sistema está em funcionamento.
-- Ocorre uma ação que deve ser registrada conforme as regras de auditoria.
-
-**Fluxo principal:**
-1. Um usuário realiza uma ação sujeita à auditoria.
-2. O sistema identifica a ação realizada.
-3. O sistema reúne as informações de auditoria previstas.
-4. O sistema registra o evento de auditoria.
-5. O sistema disponibiliza o registro para consulta por usuários autorizados.
-
-**Fluxos alternativos:**
-
-**FA01 — Ação não sujeita à auditoria**
-1. O sistema identifica que a ação não está entre aquelas que devem ser registradas.
-2. O sistema segue o processamento normal da operação.
-
-**Exceções:**
-- Se ocorrer uma falha ao registrar a auditoria, o sistema deve tratar o problema conforme a política definida para auditoria e segurança.
-
-**Pós-condições:**
-- As ações sujeitas à auditoria ficam registradas, quando a operação de auditoria é concluída com sucesso.
-
----
-
-## UC25 — Consultar auditoria
-
-**Requisito relacionado:** RF-029.
-
+**Requisitos relacionados:** RF-028 — Registrar auditoria; RF-029 — Consultar auditoria.  
 **Ator principal:** Administrador.
 
-**Objetivo:** Permitir que o administrador consulte os registros de auditoria disponíveis no sistema.
+**Objetivo:** Permitir ao administrador consultar registros de operações relevantes realizadas na plataforma.
 
 **Pré-condições:**
-- O administrador está autenticado.
-- O administrador possui permissão para consultar auditoria.
+- O administrador possui autorização para consultar os registros de auditoria.
 
 **Fluxo principal:**
-1. O administrador acessa a área de auditoria.
-2. O sistema apresenta os critérios de consulta disponíveis.
-3. O administrador informa os critérios desejados.
-4. O sistema pesquisa os registros de auditoria.
-5. O sistema apresenta os resultados encontrados.
+1. O administrador solicita a consulta dos registros de auditoria.
+2. O sistema apresenta os registros autorizados.
+3. Os registros permitem identificar, no mínimo, o usuário responsável, a ação realizada e a data/hora da operação.
 
-**Fluxos alternativos:**
-
-**FA01 — Nenhum registro encontrado**
-1. O sistema não encontra registros correspondentes aos critérios informados.
-2. O sistema informa que não há resultados para a consulta.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Se ocorrer uma falha na consulta, o sistema informa que não foi possível apresentar os registros.
+- Usuários sem permissão de auditoria não devem conseguir acessar esses registros (CA-004.3).
 
 **Pós-condições:**
-- Os registros de auditoria correspondentes são apresentados ao administrador autorizado.
-
----
-
-## Observações gerais sobre os casos de uso
-
-1. **Controle de acesso — RF-027:** é uma regra aplicada aos casos de uso da plataforma. Cada operação deve respeitar as permissões do usuário. Não é necessariamente necessário criar um caso de uso independente para cada verificação de permissão.
-
-2. **Validações de agendamento — RF-020 a RF-022:** as validações devem ser incorporadas aos casos de uso de consulta de disponibilidade, agendamento, confirmação, cancelamento e reagendamento conforme o conteúdo exato desses requisitos. Os nomes e as regras precisam ser conferidos no documento oficial.
-
-3. **Permissões da recepção:** a autorização para confirmar, cancelar e reagendar consultas deve ser validada com a equipe antes da versão final.
-
-4. **Acesso do paciente:** nesta versão do projeto, o paciente não possui acesso direto à plataforma. Portanto, não aparece como ator dos casos de uso acima.
-
-5. **Consistência da documentação:** os códigos dos casos de uso, nomes dos atores, requisitos relacionados e funcionalidades devem corresponder ao diagrama de casos de uso, à matriz de atores e funcionalidades e ao documento de requisitos.
-
-6. **Escopo do UC02:** a especificação apresentada enfatiza a consulta e alteração de usuários existentes. Se a equipe definiu que o RF-002 também inclui o cadastro de novos usuários, essa operação deve ser incorporada ao UC02 ou documentada em um caso de uso separado, conforme a organização adotada.
+- Os registros de auditoria autorizados ficam disponíveis para consulta.
