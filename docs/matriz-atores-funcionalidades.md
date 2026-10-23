@@ -7,6 +7,8 @@ Esta matriz apresenta a relação entre os atores do sistema e as funcionalidade
 
 ° — : a funcionalidade não está atribuída a esse ator nos requisitos identificados.
 
+° Sist. : comportamento executado pelo sistema quando aplicável.
+
 ## 3. Matriz de Atores e Funcionalidades:
 
 ![Matriz de Atores e Funcionalidades do sistema](<Matriz-atores-funcionalidades.png>)
