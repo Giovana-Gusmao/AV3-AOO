@@ -9,11 +9,7 @@ Esta matriz apresenta a relação entre os atores do sistema e as funcionalidade
 
 ° Sist. : comportamento executado pelo sistema quando aplicável.
 
-## 3. Matriz de Atores e Funcionalidades:
-
-![Matriz de Atores e Funcionalidades do sistema](<Matriz de atores e funcionalidades.pdf>)
-
-## 4. Observações sobre os requisitos funcionais: 
+## 3. Observações sobre os requisitos funcionais: 
 ° **RF-009:** a matriz e as especificações dos casos de uso devem refletir a decisão da equipe de permitir que a recepcionista agende, confirme, cancele e reagende consultas.
 
 ° **RF-016 — Realizar agendamento:** a recepcionista pode realizar o agendamento de consultas, respeitando as validações previstas nos requisitos e nas regras de negócio.
@@ -36,7 +32,7 @@ Esta matriz apresenta a relação entre os atores do sistema e as funcionalidade
 
 ° **Paciente:** nesta versão do sistema, o paciente é uma pessoa cadastrada, sem acesso direto à plataforma.
 
-## 5. Pendências: 
+## 4. Pendências: 
 
 ° Os requisitos RF-020 a RF-022 devem ser conferidos para que seus nomes e suas relações com os atores correspondam exatamente ao documento oficial de requisitos.
 
