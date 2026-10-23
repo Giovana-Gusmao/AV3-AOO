@@ -364,7 +364,7 @@
 
 ## UC-16 — Realizar agendamento
 
-**Requisitos relacionados:** RF-016, RF-020, RF-021 e RF-022.  
+**Requisitos relacionados:**  RF-016 — Realizar agendamento; RF-020 — Validar disponibilidade; RF-021 — Impedir conflito de agenda; RF-022 — Criar vínculo no primeiro agendamento.
 **Ator principal:** Recepcionista/atendente.
 
 **Objetivo:** Registrar uma consulta relacionando paciente, psicólogo, unidade, data e horário.
@@ -376,20 +376,22 @@
 - O psicólogo possui disponibilidade cadastrada para a unidade.
 
 **Fluxo principal:**
-1. A recepcionista pesquisa o paciente.
-2. Se necessário, realiza o cadastro do paciente.
-3. Seleciona o paciente, o psicólogo, a unidade, a data e o horário.
-4. O sistema verifica se os dados necessários estão definidos.
-5. O sistema verifica se o psicólogo possui disponibilidade compatível com a unidade, a data e o horário.
-6. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
-7. Se as validações forem atendidas, o sistema registra o agendamento.
-8. O sistema disponibiliza a consulta na agenda do psicólogo.
-9. O horário deixa de aparecer como disponível.
-10. Se for o primeiro agendamento válido entre o paciente e o psicólogo, o sistema estabelece o vínculo entre ambos, caso ainda não exista.
+1. A recepcionista acessa a funcionalidade de agendamento.
+2. Pesquisa o paciente pelo mecanismo de pesquisa disponível.
+3. O sistema apresenta o cadastro correspondente, quando localizado.
+4. A recepcionista seleciona o paciente.
+5. Seleciona o psicólogo, a unidade, a data e o horário desejados.
+6. O sistema verifica se todos os dados necessários estão definidos.
+7. O sistema verifica se o psicólogo possui disponibilidade compatível com a unidade, a data e o horário.
+8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
+9. Se todas as validações forem atendidas, o sistema registra o agendamento.
+10. O sistema atualiza a agenda e a disponibilidade do horário.
+11. Se ainda não existir vínculo entre o paciente e o psicólogo, o sistema cria o vínculo.
+12. O sistema informa que o agendamento foi concluído.
 
 **Fluxos alternativos:**
-- **FA-01 — Paciente ainda não cadastrado:** a recepcionista realiza o cadastro e utiliza os dados no agendamento.
-- **FA-02 — Vínculo paciente–psicólogo inexistente:** após a conclusão do primeiro agendamento válido, o sistema estabelece o vínculo entre ambos.
+- **FA-01 — Paciente ainda não cadastrado:** se a pesquisa não localizar o paciente, a recepcionista realiza o cadastro conforme o UC-10 e retorna ao agendamento.
+- **FA-02 — Dados precisam ser corrigidos:** se algum dado informado estiver incorreto, a recepcionista corrige as informações antes de solicitar novamente a conclusão do agendamento.
 
 **Exceções:**
 - **E-01 — Dados necessários não definidos:** o agendamento não pode ser concluído se paciente, psicólogo, unidade, data ou horário não estiverem definidos (CA-008.1).
@@ -413,17 +415,28 @@
 **Pré-condições:**
 - Existe um agendamento.
 - A recepcionista possui autorização para realizar a confirmação.
+- O agendamento está em uma situação que permite confirmação.
 
 **Fluxo principal:**
 1. A recepcionista solicita a confirmação de um agendamento existente.
-2. O sistema registra a confirmação do agendamento.
+2. Pesquisa e seleciona o agendamento que deseja confirmar.
+3. O sistema apresenta os dados necessários para identificar a consulta.
+4. A recepcionista solicita a confirmação.
+5. O sistema verifica se a operação é permitida para o usuário e para a situação atual do agendamento.
+6. O sistema atualiza o status do agendamento para “Confirmado”.
+7. O sistema registra a operação conforme as regras de auditoria aplicáveis.
+8. O sistema informa que a confirmação foi realizada.
 
-**Fluxos alternativos:** Não especificados no documento.
+**Fluxos alternativos:** 
+**-FA-01 — Agendamento não localizado:** se a pesquisa não encontrar o agendamento, o sistema informa que não foi localizado e permite uma nova pesquisa.
 
-**Exceções:** As situações específicas em que a confirmação deve ser impedida não estão detalhadas no documento.
+**Exceções:** 
+- **E-01 — Permissão insuficiente:** o sistema impede a confirmação quando o usuário não possui autorização.
+- **E-02 — Situação incompatível:** o sistema impede a confirmação quando o agendamento está em uma situação que não permite essa operação.
 
 **Pós-condições:**
 - O agendamento fica confirmado.
+- A operação é registrada conforme as regras de auditoria aplicáveis.
 
 ## UC-18 — Cancelar agendamento
 
