@@ -11,7 +11,7 @@ Esta matriz apresenta a relação entre os atores do sistema e as funcionalidade
 
 ## 3. Matriz de Atores e Funcionalidades:
 
-![Matriz de Atores e Funcionalidades do sistema](<Matriz-atores-funcionalidades.png>)
+![Matriz de Atores e Funcionalidades do sistema](<Matriz de atores e funcionalidades.pdf>)
 
 ## 4. Observações sobre os requisitos funcionais: 
 ° **RF-009:** a matriz e as especificações dos casos de uso devem refletir a decisão da equipe de permitir que a recepcionista agende, confirme, cancele e reagende consultas.
