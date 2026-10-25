@@ -446,21 +446,35 @@
 **Objetivo:** Permitir o cancelamento de uma consulta agendada.
 
 **Pré-condições:**
-- Existe um agendamento.
-- A operação é realizada por usuário administrativo autorizado.
+- A recepcionista está autenticada e possui autorização para cancelar agendamentos.
+- Existe um agendamento que pode ser localizado pelo sistema.
+- O agendamento está em uma situação que permite cancelamento.
 
 **Fluxo principal:**
-1. A recepcionista solicita o cancelamento de um agendamento.
-2. O sistema verifica as permissões aplicáveis.
-3. O sistema registra o cancelamento do agendamento.
+1. A recepcionista acessa a funcionalidade de consulta de agendamentos.
+2. Pesquisa e seleciona a consulta que deseja cancelar.
+3. O sistema apresenta os dados do agendamento selecionado.
+4. A recepcionista solicita o cancelamento.
+5. O sistema verifica a permissão do usuário e se a situação do agendamento permite o cancelamento.
+6. O sistema solicita a confirmação da operação, caso esse procedimento esteja previsto na interface.
+7. A recepcionista confirma o cancelamento.
+8. O sistema atualiza o status do agendamento para “Cancelado”.
+9. O sistema atualiza a disponibilidade conforme as regras aplicáveis.
+10. O sistema registra a operação conforme as regras de auditoria.
+11. O sistema informa que o cancelamento foi concluído.
 
-**Fluxos alternativos:** Não especificados no documento.
+**Fluxos alternativos:** 
+**-FA-01 — Agendamento não localizado:** se a pesquisa não encontrar a consulta, o sistema informa que ela não foi localizada e permite uma nova pesquisa.
+**-FA-02 — Operação não confirmada:** se a recepcionista desistir antes da confirmação definitiva, o cancelamento não é concluído e o agendamento permanece inalterado.
 
 **Exceções:**
-- O cancelamento deve respeitar as regras e permissões aplicáveis ao agendamento.
+- **E-01 — Permissão insuficiente:** o sistema impede o cancelamento quando o usuário não possui autorização.
+- **E-02 — Situação incompatível:** o sistema impede o cancelamento quando o agendamento está em uma situação que não permite essa operação.
 
 **Pós-condições:**
-- O agendamento fica cancelado.
+- O agendamento fica com o status "Cancelado".
+- A operação fica registrada conforme as regras de auditoria aplicáveis.
+- A disponibilidade do horário é atualizada conforme as regras de agendamento do sistema.
 
 ## UC-19 — Reagendar consulta
 
@@ -470,22 +484,41 @@
 **Objetivo:** Permitir a alteração da data ou do horário de uma consulta por meio de reagendamento.
 
 **Pré-condições:**
-- Existe um agendamento.
-- A operação é realizada por usuário administrativo autorizado.
+- A recepcionista está autenticada e possui autorização para reagendar consultas.
+- Existe um agendamento que pode ser localizado pelo sistema.
+- A consulta está em uma situação que permite reagendamento.
 
 **Fluxo principal:**
-1. A recepcionista solicita o reagendamento de uma consulta.
-2. Informa a nova data ou o novo horário.
-3. O sistema verifica novamente a unidade, o vínculo profissional, a disponibilidade e os conflitos de horário.
-4. Se as validações forem atendidas, o sistema registra o reagendamento.
+1. A recepcionista acessa a funcionalidade de consulta de agendamentos.
+2. Pesquisa e seleciona a consulta que deseja reagendar.
+3. O sistema apresenta os dados atuais do agendamento.
+4. A recepcionista solicita o reagendamento.
+5. Informa a nova data e/ou o novo horário desejados.
+6. O sistema verifica se o psicólogo possui vínculo ativo com a unidade selecionada.
+7. O sistema verifica a disponibilidade do psicólogo para a nova data e horário.
+8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
+9. Se todas as validações forem atendidas, o sistema registra a alteração.
+10. O sistema atualiza a agenda e a disponibilidade dos horários envolvidos.
+11. O sistema registra a operação conforme as regras de auditoria.
+12. O sistema informa que o reagendamento foi concluído.
 
-**Fluxos alternativos:** Não especificados no documento.
+**Fluxos alternativos:** 
+**-FA-01 — Novo horário indisponível:** o sistema informa que o horário selecionado não está disponível e permite que a recepcionista escolha outra opção.
+**-FA-02 — Operação não confirmada:** se a recepcionista desistir antes da conclusão, o reagendamento não é efetivado e o agendamento original é mantido.
+**-FA-03 — Nova opção de horário:** a recepcionista seleciona outra data ou horário e o sistema realiza novamente as validações.
 
 **Exceções:**
-- O reagendamento não pode ser concluído para horário que não atenda às validações de unidade, vínculo, disponibilidade e conflito de agenda (CA-009.4).
+- **E-01 — Vínculo profissional inválido:** o reagendamento não é concluído se o psicólogo não possuir vínculo ativo com a unidade selecionada.
+- **E-02 — Indisponibilidade:** o reagendamento não é concluído se o novo horário não estiver dentro da disponibilidade cadastrada.
+- **E-03 — Conflito de horário:** o sistema impede o reagendamento quando existe conflito com outro agendamento ativo do mesmo psicólogo.
+- **E-04 — Permissão insuficiente:** o sistema impede a operação quando a recepcionista não possui autorização.
+- **E-05 — Situação incompatível:** o sistema impede o reagendamento quando o estado atual da consulta não permite essa operação.
 
 **Pós-condições:**
-- A consulta fica reagendada para a data ou o horário válido informado.
+- A nova data e o novo horário da consulta são registrados.
+- A disponibilidade é atualizada conforme as regras de agendamento.
+- O status do agendamento é alterado para Reagendado.
+- A operação é registrada conforme as regras de auditoria do sistema.
 
 ## UC-20 — Consultar pacientes vinculados
 
