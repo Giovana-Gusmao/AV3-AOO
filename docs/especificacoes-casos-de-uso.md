@@ -108,10 +108,13 @@
 - O administrador está autenticado e possui permissão para gerenciar unidades.
 
 **Fluxo principal:**
-1. Se optar por atualizar, o administrador seleciona uma unidade já cadastrada.
-2. O sistema apresenta as informações da unidade selecionada.
-3. O administrador realiza as alterações necessárias.
-4. O sistema registra a operação realizada.
+1. O administrador solicita o gerenciamento de unidades.
+2. O administrador escolhe cadastrar uma nova unidade ou atualizar uma unidade existente.
+3. Se optar pelo cadastro, informa os dados necessários da nova unidade.
+4. Se optar por atualizar, o administrador seleciona uma unidade já cadastrada.
+5. O sistema apresenta as informações da unidade selecionada.
+6. O administrador informa os dados e realiza as alterações necessárias.
+7. O sistema registra a operação realizada.
 
 **Fluxos alternativos:**
 - O administrador pode cadastrar uma nova unidade ou atualizar uma unidade existente.
