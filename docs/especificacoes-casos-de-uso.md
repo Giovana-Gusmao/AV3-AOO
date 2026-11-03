@@ -159,8 +159,10 @@
 
 **Fluxo principal:**
 1. O administrador solicita a criação ou o encerramento de um vínculo entre psicólogo e unidade.
-2. O sistema realiza a operação solicitada.
-3. O sistema preserva o histórico do vínculo.
+2. Seleciona o psicólogo e a unidade relacionados à operação.
+3. O sistema verifica as condições necessárias para realizar a operação.
+4. O sistema cria ou encerra o vínculo solicitado.
+5. O sistema preserva o histórico do vínculo.
 
 **Fluxos alternativos:**
 - O administrador pode criar um vínculo ou encerrar um vínculo existente.
@@ -381,7 +383,7 @@
 **Fluxo principal:**
 1. A recepcionista acessa a funcionalidade de agendamento.
 2. A recepcionista pesquisa o paciente utilizando a funcionalidade de pesquisa de pacientes (UC-11).
-3. O sistema apresenta o cadastro correspondente, quando localizado.
+3. O sistema apresenta o cadastro correspondente para que a recepcionista possa selecioná-lo.
 4. A recepcionista seleciona o paciente.
 5. Seleciona o psicólogo, a unidade, a data e o horário desejados.
 6. O sistema verifica se todos os dados necessários estão definidos.
@@ -457,7 +459,7 @@
 3. O sistema apresenta os dados do agendamento selecionado.
 4. A recepcionista solicita o cancelamento.
 5. O sistema verifica a permissão do usuário e se a situação do agendamento permite o cancelamento.
-6. O sistema solicita a confirmação da operação, caso esse procedimento esteja previsto na interface.
+6. O sistema solicita a confirmação da operação.
 7. A recepcionista confirma o cancelamento.
 8. O sistema atualiza o status do agendamento para “Cancelado”.
 9. O sistema atualiza a disponibilidade conforme as regras aplicáveis.
@@ -497,7 +499,7 @@
 6. O sistema verifica se o psicólogo possui vínculo ativo com a unidade selecionada.
 7. O sistema verifica a disponibilidade do psicólogo para a nova data e horário.
 8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
-9. Se todas as validações forem atendidas, o sistema registra a nova data e o novo horário.
+9. Se todas as validações forem atendidas, o sistema registra a nova data e/ou o novo horário.
 10. O sistema libera o horário anterior e reserva o novo horário, atualizando a agenda e a disponibilidade.
 11. O sistema registra a operação conforme as regras de auditoria.
 12. O sistema informa que o reagendamento foi concluído.
@@ -626,7 +628,8 @@
 
 ## UC-24 — Consultar auditoria
 
-**Requisitos relacionados:** RF-028 — Registrar auditoria; RF-029 — Consultar auditoria.  
+**Requisitos relacionados:** RF-029 — Consultar auditoria.
+**Requisito complementar:** RF-028 — Registrar auditoria.
 **Ator principal:** Administrador.
 
 **Objetivo:** Permitir ao administrador consultar registros de operações relevantes realizadas na plataforma.
