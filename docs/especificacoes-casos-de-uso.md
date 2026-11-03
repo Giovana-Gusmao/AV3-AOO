@@ -108,9 +108,9 @@
 - O administrador está autenticado e possui permissão para gerenciar unidades.
 
 **Fluxo principal:**
-1. O administrador solicita o gerenciamento de unidades.
-2. Escolhe cadastrar ou atualizar uma unidade.
-3. No cadastro, informa os dados obrigatórios.
+1. Se optar por atualizar, o administrador seleciona uma unidade já cadastrada.
+2. O sistema apresenta as informações da unidade selecionada.
+3. O administrador realiza as alterações necessárias.
 4. O sistema registra a operação realizada.
 
 **Fluxos alternativos:**
@@ -225,13 +225,13 @@
 - A recepcionista está autorizada a realizar o cadastro administrativo de pacientes.
 
 **Fluxo principal:**
-1. A recepcionista pesquisa se o paciente já está cadastrado.
-2. Quando não há registro correspondente, informa os dados administrativos obrigatórios.
+1. A recepcionista solicita o cadastro de um novo paciente.
+2. Informa os dados administrativos obrigatórios definidos pelo sistema.
 3. O sistema cadastra o paciente.
 4. O cadastro fica disponível para utilização no processo de agendamento.
 
 **Fluxos alternativos:**
-- Se o paciente já estiver cadastrado, a recepcionista poderá utilizar o cadastro existente, sem criar outro desnecessariamente.
+- **FA-01 — Paciente já cadastrado:** se a recepcionista identificar que o paciente já possui cadastro, poderá utilizar as informações existentes, sem criar um novo registro desnecessariamente.
 
 **Exceções:**
 - O sistema deve adotar validações para reduzir cadastros duplicados (CA-005.5).
@@ -341,7 +341,7 @@
 
 ## UC-15 — Consultar disponibilidade para agendamento
 
-**Requisitos relacionados:** RF-015 — Consultar disponibilidade para agendamento; RF-020 — Validar disponibilidade; RF-021 — Impedir conflito de agenda.  
+**Requisitos relacionados:** RF-015 — Consultar disponibilidade para agendamento.
 **Ator principal:** Recepcionista/atendente.
 
 **Objetivo:** Permitir que a recepcionista consulte os horários disponíveis dos psicólogos nas respectivas unidades.
@@ -377,7 +377,7 @@
 
 **Fluxo principal:**
 1. A recepcionista acessa a funcionalidade de agendamento.
-2. Pesquisa o paciente pelo mecanismo de pesquisa disponível.
+2. A recepcionista pesquisa o paciente utilizando a funcionalidade de pesquisa de pacientes (UC-11).
 3. O sistema apresenta o cadastro correspondente, quando localizado.
 4. A recepcionista seleciona o paciente.
 5. Seleciona o psicólogo, a unidade, a data e o horário desejados.
@@ -413,9 +413,8 @@
 **Objetivo:** Permitir a confirmação de uma consulta previamente agendada.
 
 **Pré-condições:**
-- Existe um agendamento.
-- A recepcionista possui autorização para realizar a confirmação.
-- O agendamento está em uma situação que permite confirmação.
+- Existe um agendamento em situação Agendado ou Reagendado.
+- A recepcionista está autenticada e possui autorização para confirmar agendamentos.
 
 **Fluxo principal:**
 1. A recepcionista solicita a confirmação de um agendamento existente.
@@ -446,9 +445,8 @@
 **Objetivo:** Permitir o cancelamento de uma consulta agendada.
 
 **Pré-condições:**
+- Existe um agendamento em situação Agendado, Confirmado ou Reagendado.
 - A recepcionista está autenticada e possui autorização para cancelar agendamentos.
-- Existe um agendamento que pode ser localizado pelo sistema.
-- O agendamento está em uma situação que permite cancelamento.
 
 **Fluxo principal:**
 1. A recepcionista acessa a funcionalidade de consulta de agendamentos.
@@ -484,9 +482,8 @@
 **Objetivo:** Permitir a alteração da data ou do horário de uma consulta por meio de reagendamento.
 
 **Pré-condições:**
+- Existe um agendamento em situação Agendado, Confirmado ou Reagendado.
 - A recepcionista está autenticada e possui autorização para reagendar consultas.
-- Existe um agendamento que pode ser localizado pelo sistema.
-- A consulta está em uma situação que permite reagendamento.
 
 **Fluxo principal:**
 1. A recepcionista acessa a funcionalidade de consulta de agendamentos.
@@ -497,8 +494,8 @@
 6. O sistema verifica se o psicólogo possui vínculo ativo com a unidade selecionada.
 7. O sistema verifica a disponibilidade do psicólogo para a nova data e horário.
 8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
-9. Se todas as validações forem atendidas, o sistema registra a alteração.
-10. O sistema atualiza a agenda e a disponibilidade dos horários envolvidos.
+9. Se todas as validações forem atendidas, o sistema registra a nova data e o novo horário.
+10. O sistema libera o horário anterior e reserva o novo horário, atualizando a agenda e a disponibilidade.
 11. O sistema registra a operação conforme as regras de auditoria.
 12. O sistema informa que o reagendamento foi concluído.
 
@@ -516,9 +513,9 @@
 
 **Pós-condições:**
 - A nova data e o novo horário da consulta são registrados.
-- A disponibilidade é atualizada conforme as regras de agendamento.
+- O horário anterior é liberado e o novo horário fica reservado, após a conclusão válida do reagendamento.
 - O status do agendamento é alterado para Reagendado.
-- A operação é registrada conforme as regras de auditoria do sistema.
+- Se a consulta já estava com status Reagendado, permanece com essa mesma situação após um novo reagendamento.
 
 ## UC-20 — Consultar pacientes vinculados
 
@@ -542,7 +539,6 @@
 
 **Pós-condições:**
 - Os pacientes autorizados ficam disponíveis para consulta.
-- O histórico dos vínculos encerrados permanece preservado.
 
 ## UC-21 — Registrar atendimento
 
@@ -562,6 +558,7 @@
 4. O psicólogo preenche as informações do atendimento.
 5. O sistema salva o registro e o associa ao psicólogo e ao paciente correspondentes.
 6. O atendimento passa a integrar o histórico do paciente.
+7. O sistema atualiza a situação do agendamento correspondente para "Realizado".
 
 **Fluxos alternativos:** Não especificados no documento.
 
@@ -572,6 +569,7 @@
 **Pós-condições:**
 - O atendimento fica registrado e associado ao psicólogo e ao paciente correspondentes.
 - O atendimento integra o histórico do paciente.
+- O agendamento correspondente fica com a situação Realizado.
 
 ## UC-22 — Consultar histórico de atendimentos
 
@@ -598,7 +596,7 @@
 
 ## UC-23 — Corrigir registro de atendimento
 
-**Requisito relacionado:** RF-026 — Corrigir registro de atendimento  
+**Requisito relacionado:** RF-026 — Corrigir registro de atendimento; RF-028 — Registrar auditoria.
 **Ator principal:** Psicólogo.
 
 **Objetivo:** Permitir a correção de registros de atendimento sob responsabilidade do psicólogo, preservando a rastreabilidade das alterações.
