@@ -113,7 +113,7 @@
 3. Se optar pelo cadastro, informa os dados necessários da nova unidade.
 4. Se optar por atualizar, o administrador seleciona uma unidade já cadastrada.
 5. O sistema apresenta as informações da unidade selecionada.
-6. O administrador informa os dados e realiza as alterações necessárias.
+6. O administrador informa os dados necessários para o cadastro e realiza as alterações necessárias.
 7. O sistema registra a operação realizada.
 
 **Fluxos alternativos:**
@@ -391,7 +391,7 @@
 8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
 9. Se todas as validações forem atendidas, o sistema registra o agendamento.
 10. O sistema atualiza a agenda e a disponibilidade do horário.
-11. Se ainda não existir vínculo entre o paciente e o psicólogo, o sistema cria o vínculo.
+11. O sistema verifica se já existe vínculo entre o paciente e o psicólogo e, caso não exista, cria o vínculo.
 12. O sistema informa que o agendamento foi concluído.
 
 **Fluxos alternativos:**
