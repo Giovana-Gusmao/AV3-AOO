@@ -6,6 +6,8 @@
 
 **Curso:** Ciência da computação
 
+<br>
+
 **Sobre o projeto:**
 
 Este projeto foi desenvolvido como parte da avaliação AV3 da disciplina de Análise Orientada a Objetos. Seu objetivo é transformar um problema real relacionado à gestão de serviços de profissionais de Psicologia em uma modelagem orientada a objetos consistente, verificável e suficientemente detalhada para orientar uma futura implementação.
