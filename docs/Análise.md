@@ -261,3 +261,91 @@ As funcionalidades e informações disponíveis a cada usuário deverão respeit
 **RN-021 — Auditoria:**
 Operações administrativas e alterações relevantes deverão gerar informações suficientes para identificar o usuário responsável e o momento da operação.
 
+## REQUISITOS FUNCIONAIS
+
+**RF-001 — Autenticar usuário:**
+O sistema deverá permitir que usuários cadastrados e ativos realizem autenticação utilizando suas credenciais individuais.
+
+**RF-002 — Gerenciar usuários:**
+O sistema deverá permitir ao administrador cadastrar e atualizar usuários da plataforma.
+
+**RF-003 — Ativar e bloquear usuários:**
+O sistema deverá permitir ao administrador ativar ou bloquear o acesso de usuários.
+
+**RF-004 — Gerenciar perfis e permissões:**
+O sistema deverá permitir ao administrador definir e gerenciar os perfis e permissões associados aos usuários.
+
+**RF-005 — Gerenciar unidades:**
+O sistema deverá permitir ao administrador cadastrar e atualizar as unidades pertencentes à organização.
+
+**RF-006 — Gerenciar profissionais:** 
+O sistema deverá permitir ao administrador visualizar e manter as informações administrativas dos profissionais cadastrados.
+
+**RF-007 — Vincular psicólogo à unidade:**
+O sistema deverá permitir ao administrador criar e encerrar vínculos profissionais entre psicólogos e unidades.
+
+**RF-008 — Consultar profissionais por unidade:**
+O sistema deverá permitir ao administrador consultar quais profissionais possuem vínculo com determinada unidade.
+
+**RF-009 — Visualizar painel geral:**
+O sistema deverá disponibilizar ao administrador uma visão consolidada da organização, apresentando informações gerais como quantidade de profissionais, pacientes e atendimentos, permitindo filtragem por unidade e período quando aplicável.
+
+**RF-010 — Cadastrar paciente:**
+O sistema deverá permitir à recepcionista cadastrar os dados administrativos básicos de um novo paciente durante o processo de agendamento.
+
+**RF-011 — Pesquisar paciente:**
+O sistema deverá permitir à recepcionista pesquisar pacientes já cadastrados para reutilizar seus dados em novos agendamentos.
+
+**RF-012 — Atualizar dados administrativos do paciente:**
+O sistema deverá permitir à recepcionista atualizar informações administrativas autorizadas do paciente, como dados de contato.
+
+**RF-013 — Gerenciar disponibilidade:**
+O sistema deverá permitir ao psicólogo cadastrar e alterar sua disponibilidade de atendimento nas unidades às quais possuir vínculo ativo.
+
+**RF-014 — Consultar agenda do psicólogo:**
+O sistema deverá permitir ao psicólogo consultar sua agenda, incluindo horários disponíveis e consultas agendadas.
+
+**RF-015 — Consultar disponibilidade para agendamento:**
+O sistema deverá permitir à recepcionista visualizar os horários disponíveis dos psicólogos nas respectivas unidades.
+
+**RF-016 — Realizar agendamento:**
+O sistema deverá permitir à recepcionista realizar o agendamento de uma consulta relacionando paciente, psicólogo, unidade, data e horário.
+
+**RF-017 — Confirmar agendamento:**
+O sistema deverá permitir à recepcionista confirmar uma consulta previamente agendada.
+
+**RF-018 — Cancelar agendamento:**
+O sistema deverá permitir à recepcionista cancelar uma consulta agendada.
+
+**RF-019 — Reagendar consulta:**
+O sistema deverá permitir à recepcionista alterar a data ou o horário de uma consulta por meio de reagendamento.
+
+**RF-020 — Validar disponibilidade:**
+O sistema deverá verificar se o psicólogo possui disponibilidade válida na unidade, data e horário selecionados antes de concluir um agendamento.
+
+**RF-021 — Impedir conflito de agenda:**
+O sistema deverá impedir a criação de agendamentos que provoquem conflito de horário para o mesmo psicólogo.
+
+**RF-022 — Criar vínculo no primeiro agendamento:**
+O sistema deverá estabelecer o vínculo entre paciente e psicólogo quando for concluído o primeiro agendamento válido entre eles, caso ainda não exista vínculo correspondente.
+
+**RF-023 — Consultar pacientes vinculados:**
+O sistema deverá permitir ao psicólogo consultar os pacientes aos quais possui vínculo autorizado.
+
+**RF-024 — Registrar atendimento:**
+O sistema deverá permitir ao psicólogo registrar informações profissionais referentes a uma consulta realizada.
+
+**RF-025 — Consultar histórico de atendimentos:**
+O sistema deverá permitir ao psicólogo consultar, de forma cronológica e detalhada, o histórico de atendimentos dos pacientes aos quais possuir acesso autorizado.
+
+**RF-026 — Corrigir registro de atendimento:**
+O sistema deverá permitir ao psicólogo realizar correções em registros de atendimento sob sua responsabilidade, preservando a rastreabilidade das alterações.
+
+**RF-027 — Controlar acesso por permissões:**
+O sistema deverá disponibilizar funcionalidades e informações de acordo com os perfis e permissões atribuídos ao usuário autenticado.
+
+**RF-028 — Registrar auditoria:**
+O sistema deverá registrar operações relevantes realizadas pelos usuários, permitindo identificar a ação, o responsável e o momento em que ocorreu.
+
+**RF-029 — Consultar auditoria:**
+O sistema deverá permitir ao administrador consultar os registros de auditoria autorizados.
