@@ -1,10 +1,10 @@
 ## AV3- Análise Orientada a Objetos
 
-## Professor: Celso Barreto
+**Professor:** Celso Barreto
 
-## Centro Universitário Jorge Amado
+**Instituição:** Centro Universitário Jorge Amado
 
-## Curso: Ciência da computação
+**Curso:** Ciência da computação
 
 **Sobre o projeto:**
 
