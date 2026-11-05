@@ -1,6 +1,9 @@
 ## AV3- Análise Orientada a Objetos
+
 ## Professor: Celso Barreto
+
 ## Centro Universitário Jorge Amado
+
 ## Curso: Ciência da computação
 
 **Sobre o projeto:**
@@ -19,12 +22,12 @@ Desenvolver a modelagem de uma plataforma de gestão voltada para clínicas e pr
 
 O trabalho busca garantir a coerência entre os requisitos levantados, as regras de negócio, os modelos UML e as demais definições necessárias para uma futura implementação.
 
-**Componentes:** <br>
-Andrei Kevin Rodrigues Bispo <br>
-Giovana Gusmão Santos <br>
-Paulo Henrique Leal Azevedo <br>
-Pedro Henrique Oliveira do Nascimento <br>
-Saulo Rafael Almeida de Freitas <br>
+**Componentes:**
+Andrei Kevin Rodrigues Bispo
+Giovana Gusmão Santos
+Paulo Henrique Leal Azevedo
+Pedro Henrique Oliveira do Nascimento
+Saulo Rafael Almeida de Freitas
 
 **Artefatos desenvolvidos:**
 - Análise de negócios e levantamento de requisitos
