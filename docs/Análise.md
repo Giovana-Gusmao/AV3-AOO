@@ -97,3 +97,88 @@ A disponibilidade dos profissionais e os agendamentos serão administrados na pr
 **PRE-008 — Preservação do histórico**
 Vínculos encerrados entre profissionais, unidades ou pacientes deverão permanecer registrados para preservação do histórico da organização.
 
+## RESTRIÇÕES
+**RES-001 — Controle de acesso:**
+O acesso às informações e funcionalidades será limitado conforme o perfil e as permissões atribuídas a cada usuário.
+
+**RES-002 — Restrição da recepção:**
+A recepcionista poderá acessar as informações administrativas necessárias ao cadastro e ao agendamento, mas não poderá visualizar o conteúdo profissional detalhado dos registros de atendimento.
+
+**RES-003 — Restrição do psicólogo:**
+O psicólogo não poderá acessar indiscriminadamente os registros profissionais de todos os pacientes da organização, devendo respeitar os vínculos e permissões definidos.
+
+**RES-004 — Paciente não autenticado:**
+Não será disponibilizado login ou portal de acesso ao paciente nesta versão.
+
+**RES-005 — Ausência de módulo financeiro:**
+Faturamento, pagamentos, emissão fiscal e demais funcionalidades financeiras não farão parte do escopo desta versão.
+
+**RES-006 — Uma organização, múltiplas unidades:**
+A plataforma poderá administrar diversas unidades da mesma organização, mas não será modelada inicialmente como uma solução destinada a várias organizações independentes.
+
+**RES-007 — Dados de pacientes:**
+Os artefatos acadêmicos não utilizarão dados reais de pacientes. Essa proibição aparece expressamente nas condições da atividade.
+
+**RES-008 — Proteção de credenciais:**
+Senhas não poderão ser disponibilizadas em texto puro, em conformidade com a exigência de proteção de senhas prevista no enunciado.
+
+## GLOSSÁRIO
+**Organização:**
+Instituição responsável pela operação das clínicas/unidades e pela utilização da plataforma.
+
+**Unidade:**
+Clínica ou local pertencente à organização onde os profissionais podem exercer suas atividades e realizar atendimentos.
+
+**Usuário:**
+Pessoa autorizada a acessar diretamente a plataforma por meio de credenciais próprias.
+
+**Administrador:**
+Usuário responsável pela gestão de acessos, unidades, profissionais e demais informações administrativas permitidas.
+
+**Recepcionista/Atendente:**
+Usuário responsável principalmente pelo cadastro administrativo inicial do paciente e pela realização de agendamentos.
+
+**Psicólogo:**
+Profissional de Psicologia cadastrado no sistema, vinculado a uma ou mais unidades e autorizado a realizar atividades profissionais.
+
+**Paciente:**
+Pessoa cadastrada na plataforma para realização de consultas e acompanhamento profissional, sem acesso direto ao sistema nesta versão.
+
+**Área de Atuação:**
+Campo profissional da Psicologia em que determinado psicólogo exerce suas atividades.
+
+**Vínculo Profissional:**
+Relação que representa que um psicólogo trabalha ou trabalhou em determinada unidade, podendo possuir situação ativa ou inativa e manter histórico.
+
+**Vínculo Psicólogo–Paciente:**
+Relação que identifica quais psicólogos estão ou estiveram responsáveis pelo acompanhamento de determinado paciente.
+
+**Perfil:**
+Conjunto de responsabilidades atribuído a um usuário no sistema.
+
+**Permissão:**
+Autorização que determina quais funcionalidades ou informações determinado perfil pode acessar.
+
+**Disponibilidade:**
+Período informado pelo psicólogo no qual ele pode realizar atendimentos em determinada unidade.
+
+**Horário Disponível:**
+Período pertencente à disponibilidade do psicólogo que ainda não possui agendamento ativo.
+
+**Agenda:**
+Visão organizada das disponibilidades e dos agendamentos de um psicólogo.
+
+**Agendamento:**
+Reserva de uma data e horário para atendimento de um paciente por determinado psicólogo em uma unidade específica, possuindo uma situação própria.
+
+**Atendimento:**
+Registro criado após a realização da consulta, contendo as informações profissionais registradas pelo psicólogo sobre aquele atendimento.
+
+**Histórico de Atendimento:**
+Conjunto cronológico dos atendimentos de um paciente, contendo os registros detalhados correspondentes a cada atendimento realizado.
+
+**Auditoria:**
+Registro das ações relevantes realizadas pelos usuários para permitir rastreabilidade e identificação de quem realizou determinada operação.
+
+
+
