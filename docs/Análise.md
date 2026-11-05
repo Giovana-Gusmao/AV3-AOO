@@ -1,7 +1,9 @@
 ## VISÃO
 O sistema proposto tem como finalidade centralizar e colaborar com a gestão das atividades administrativas e profissionais, reunindo em um único ambiente informações que podem estar distribuídas em diferentes ferramentas.
-Ele será utilizado por administradores, psicólogos e recepcionistas/atendentes. Os administradores serão responsáveis pelo gerenciamento dos usuários e de seus acessos; os psicólogos poderão acompanhar sua agenda, seus pacientes vinculados e os registros relacionados aos atendimentos; e os recepcionistas poderão realizar atividades administrativas relacionadas aos pacientes e aos agendamentos, respeitando as permissões atribuídas ao seu perfil. <br>
-A plataforma deverá centralizar informações de profissionais, pacientes, unidades, disponibilidade, agendamentos e atendimentos, possibilitando maior organização da rotina da instituição e controle sobre quem pode acessar ou realizar determinadas operações. <br>
+Ele será utilizado por administradores, psicólogos e recepcionistas/atendentes. Os administradores serão responsáveis pelo gerenciamento dos usuários e de seus acessos; os psicólogos poderão acompanhar sua agenda, seus pacientes vinculados e os registros relacionados aos atendimentos; e os recepcionistas poderão realizar atividades administrativas relacionadas aos pacientes e aos agendamentos, respeitando as permissões atribuídas ao seu perfil.
+
+A plataforma deverá centralizar informações de profissionais, pacientes, unidades, disponibilidade, agendamentos e atendimentos, possibilitando maior organização da rotina da instituição e controle sobre quem pode acessar ou realizar determinadas operações.
+
 A solução também será estruturada de forma flexível para permitir que a organização possua uma ou mais unidades e profissionais de diferentes áreas de atuação, evitando que o crescimento da instituição exija uma reformulação dos principais conceitos do sistema.
 
 ## CONTEXTO
