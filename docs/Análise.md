@@ -41,6 +41,7 @@ Modelar uma plataforma integrada para organizações de Psicologia que aumente a
 
 ## ESCOPOS
 A plataforma abrangerá as funcionalidades necessárias para apoiar a gestão administrativa e profissional de uma organização de Psicologia, contemplando usuários com diferentes responsabilidades e permitindo que a operação seja realizada em uma ou várias unidades.
+
 **Administrador:**
 O administrador terá uma visão gerencial da organização e será responsável principalmente por:
 - visualizar e gerenciar unidades;
@@ -64,8 +65,11 @@ Ele não deverá possuir acesso administrativo geral da organização simplesmen
 
 ## FRONTEIRA
 A plataforma será responsável pela centralização das informações administrativas e profissionais necessárias à gestão de usuários, unidades, profissionais, pacientes, disponibilidade, agendamentos e atendimentos. O sistema controlará o acesso às funcionalidades de acordo com os perfis e permissões estabelecidos.
+
 Administradores, psicólogos e recepcionistas/atendentes serão usuários externos que interagem diretamente com a plataforma, cada um respeitando suas atribuições.
+
 O paciente fará parte do domínio e possuirá informações cadastradas no sistema, mas não será considerado usuário direto da plataforma nesta versão.
+
 Processos financeiros, fiscais, trabalhistas, teleatendimento e outros serviços não relacionados diretamente ao problema definido estarão fora da fronteira da solução.
 
 ## PREMISSAS
