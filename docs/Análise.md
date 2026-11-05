@@ -1,6 +1,8 @@
 ## VISÃO
 O sistema proposto tem como finalidade centralizar e colaborar com a gestão das atividades administrativas e profissionais, reunindo em um único ambiente informações que podem estar distribuídas em diferentes ferramentas.
-Ele será utilizado por administradores, psicólogos e recepcionistas/atendentes. Os administradores serão responsáveis pelo gerenciamento dos usuários e de seus acessos; os psicólogos poderão acompanhar sua agenda, seus pacientes vinculados e os registros relacionados aos atendimentos; e os recepcionistas poderão realizar atividades administrativas relacionadas aos pacientes e aos agendamentos, respeitando as permissões atribuídas ao seu perfil.
+Ele será utilizado por administradores, psicólogos e recepcionistas/atendentes. 
+
+Os administradores serão responsáveis pelo gerenciamento dos usuários e de seus acessos; os psicólogos poderão acompanhar sua agenda, seus pacientes vinculados e os registros relacionados aos atendimentos; e os recepcionistas poderão realizar atividades administrativas relacionadas aos pacientes e aos agendamentos, respeitando as permissões atribuídas ao seu perfil.
 
 A plataforma deverá centralizar informações de profissionais, pacientes, unidades, disponibilidade, agendamentos e atendimentos, possibilitando maior organização da rotina da instituição e controle sobre quem pode acessar ou realizar determinadas operações.
 
@@ -8,14 +10,20 @@ A solução também será estruturada de forma flexível para permitir que a org
 
 ## CONTEXTO
 A plataforma será projetada para atender organizações e clínicas de Psicologia de diferentes portes, desde operações iniciantes com uma única unidade até estruturas maiores compostas por múltiplas unidades e diversos profissionais.
+
 Nesse contexto, é comum que informações administrativas e profissionais sejam distribuídas entre diferentes recursos, como planilhas, agendas, calendários digitais e sistemas isolados que não oferecem uma visão integrada da operação.
+
 Nesse sentido, essa organização pode exigir que administradores, recepcionistas e psicólogos consultem diferentes ferramentas para localizar informações relacionadas a pacientes, profissionais, disponibilidade, agendamentos e atendimentos, tornando as atividades do dia a dia mais fragmentadas.
+
 A proposta do sistema desponta nesse ambiente como o objetivo de centralizar essas informações e auxiliar na organização das atividades administrativas e profissionais, mantendo uma estrutura flexível que permita acompanhar o crescimento da organização, como a inclusão de novos profissionais, áreas de atuação e unidades, sem exigir reformulação significativa dos conceitos centrais do sistema.
 
 ## SITUAÇÃO-PROBLEMA
 Atualmente, uma organização ou clínica de Psicologia pode conseguir manter suas atividades utilizando diferentes ferramentas, como planilhas, agendas, calendários digitais e sistemas isolados. Entretanto, a ausência de integração entre esses recursos torna a gestão das informações mais fragmentada e pode gerar dados divergentes ou desatualizados.
+
 Essa fragmentação afeta os diferentes usuários da organização de maneiras distintas. O administrador pode enfrentar dificuldades para gerenciar usuários, acessos, profissionais e diferentes unidades de forma integrada; o psicólogo pode necessitar de consultas em diferentes ferramentas a fim de encontrar sua agenda e informações ligadas aos atendimentos de seus pacientes; e a recepção pode encontrar dificuldade para visualizar de forma centralizada os horários disponíveis e já agendados.
+
 O problema tende a se tornar ainda maior conforme p crescimento da organização, incorpora novos profissionais ou passa a operar em múltiplas unidades, pois processos e informações que antes eram administráveis de forma separada tornam-se progressivamente mais difíceis de coordenar.
+
 Dessa forma, embora a organização consiga funcionar com as ferramentas existentes, a falta de integração e centralização pode gerar retrabalho, inconsistências, dificuldade de controle de acesso e obstáculos à organização e expansão da operação.
 
 ## OBJETIVOS
