@@ -5,8 +5,7 @@
 **Instituição:** Centro Universitário Jorge Amado
 
 **Curso:** Ciência da computação
-
-<br>
+--------------------------------------------------------------------------
 
 **Sobre o projeto:**
 
