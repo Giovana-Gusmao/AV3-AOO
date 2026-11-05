@@ -180,5 +180,84 @@ Conjunto cronológico dos atendimentos de um paciente, contendo os registros det
 **Auditoria:**
 Registro das ações relevantes realizadas pelos usuários para permitir rastreabilidade e identificação de quem realizou determinada operação.
 
+## STACKHOLDERS E ATORES
+**Atores:**
 
+**-Administrador:**
+Usuário responsável pela gestão da organização dentro da plataforma. Representa também o papel de gestor/dono da clínica nesta versão. Suas responsabilidades incluem controle de acessos, visualização de unidades, profissionais vinculados e informações administrativas gerais.
+
+**Psicólogo:**
+Usuário responsável pelas atividades profissionais. Acessa sua agenda, disponibilidade, pacientes vinculados e registros de atendimento autorizados.
+
+**Recepcionista/Atendente:**
+Usuário responsável pelas atividades administrativas relacionadas principalmente ao cadastro inicial do paciente e ao agendamento de consultas.
+
+## Stakeholder sem interação direta
+
+**Paciente:**
+Pessoa atendida pela organização e diretamente afetada pelos agendamentos, cadastros e registros de atendimento, mas que não utiliza diretamente a plataforma nesta versão.
+
+## REGRAS DE NEGÓCIO
+**RN-001 — Vínculo entre psicólogo e unidade:**
+Somente o administrador poderá criar, alterar ou encerrar o vínculo profissional entre um psicólogo e uma unidade.
+
+**RN-002 — Múltiplas unidades:**
+Um psicólogo poderá possuir vínculo ativo com uma ou mais unidades da organização.
+
+**RN-003 — Histórico do vínculo profissional:**
+O encerramento do vínculo entre psicólogo e unidade não deverá excluir seu histórico, devendo o vínculo permanecer registrado como inativo ou encerrado.
+
+**RN-004 — Vínculo entre paciente e psicólogo:**
+Ao realizar o primeiro agendamento válido de um paciente com determinado psicólogo, o sistema deverá estabelecer o vínculo entre ambos.
+
+**RN-005 — Múltiplos psicólogos:**
+Um paciente poderá estar vinculado a mais de um psicólogo, desde que existam vínculos válidos correspondentes.
+
+**RN-006 — Acesso do psicólogo aos pacientes:**
+O psicólogo somente poderá acessar informações profissionais de pacientes com os quais possua vínculo autorizado.
+
+**RN-007 — Acesso da recepção:**
+A recepcionista poderá acessar somente os dados administrativos necessários ao cadastro e agendamento do paciente, não podendo consultar o conteúdo profissional detalhado dos atendimentos.
+
+**RN-008 — Gestão da disponibilidade:**
+O psicólogo poderá definir e alterar seus períodos de disponibilidade para atendimento nas unidades às quais possuir vínculo ativo.
+
+**RN-009 — Responsabilidade sobre agendamentos:**
+A recepcionista poderá realizar, confirmar, cancelar e reagendar consultas.
+
+**RN-010 — Limitação do psicólogo sobre consultas já agendadas:**
+O psicólogo poderá consultar seus agendamentos, porém não deverá alterar diretamente consultas já marcadas. Cancelamentos e reagendamentos deverão ser realizados por usuário administrativo autorizado.
+
+**RN-011 — Validação de disponibilidade:**
+Um agendamento somente poderá ser realizado se o psicólogo possuir disponibilidade compatível com a unidade, data e horário escolhidos.
+
+**RN-012 — Conflito de horários:**
+Não poderá existir mais de um agendamento ativo para o mesmo psicólogo em períodos conflitantes.
+
+**RN-013 — Unidade do agendamento:**
+Todo agendamento deverá estar relacionado a exatamente um paciente, um psicólogo, uma unidade, uma data e um horário.
+
+**RN-014 — Situação do agendamento:**
+Todo agendamento deverá possuir uma situação válida entre: Agendado, Confirmado, Realizado, Reagendado, Cancelado ou Não Compareceu.
+
+**RN-015 — Criação do atendimento:**
+Um registro de atendimento somente poderá ser criado após a realização da consulta correspondente.
+
+**RN-016 — Responsabilidade pelo registro:**
+Somente o psicólogo autorizado poderá criar ou alterar o registro profissional de um atendimento sob sua responsabilidade.
+
+**RN-017 — Conteúdo do atendimento:**
+O registro de atendimento deverá permitir informações detalhadas referentes à consulta em nível conceitual, compondo posteriormente o histórico do paciente.
+
+**RN-018 — Correção de registro de atendimento:**
+Após o registro de um atendimento, eventuais alterações realizadas pelo psicólogo deverão preservar a rastreabilidade da modificação.
+
+**RN-019 — Credenciais individuais:**
+Cada usuário deverá utilizar credenciais próprias de acesso, não sendo permitido o uso compartilhado de uma mesma conta por diferentes usuários.
+
+**RN-020 — Controle por perfil e permissão:**
+As funcionalidades e informações disponíveis a cada usuário deverão respeitar seu perfil e suas permissões.
+
+**RN-021 — Auditoria:**
+Operações administrativas e alterações relevantes deverão gerar informações suficientes para identificar o usuário responsável e o momento da operação.
 
