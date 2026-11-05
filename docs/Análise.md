@@ -349,3 +349,118 @@ O sistema deverá registrar operações relevantes realizadas pelos usuários, p
 
 **RF-029 — Consultar auditoria:**
 O sistema deverá permitir ao administrador consultar os registros de auditoria autorizados.
+
+## REQUISITOS NÃO FUNCIONAIS
+
+**RNF-001 — Autenticação segura:**
+O sistema deverá exigir autenticação por credenciais individuais para acesso às funcionalidades protegidas.
+
+**RNF-002 — Proteção de senhas:**
+As senhas dos usuários não deverão ser armazenadas nem disponibilizadas em texto puro, devendo ser protegidas por mecanismo seguro de armazenamento.
+
+**RNF-003 — Controle de autorização:**
+O sistema deverá restringir o acesso às funcionalidades e informações de acordo com os perfis e permissões atribuídos a cada usuário.
+
+**RNF-004 — Proteção das informações profissionais:**
+O sistema deverá impedir que usuários sem autorização, incluindo recepcionistas, acessem o conteúdo profissional detalhado dos registros de atendimento.
+
+**RNF-005 — Rastreabilidade:**
+O sistema deverá manter registros das operações relevantes, permitindo identificar o usuário responsável, a ação realizada e o momento da operação.
+
+**RNF-006 — Desempenho:**
+As operações rotineiras, como consulta de agenda, pacientes, unidades e disponibilidade, deverão apresentar resposta em até 3 segundos, em condições normais de utilização.
+
+**RNF-007 — Facilidade de uso:**
+A interface deverá permitir que usuários autorizados realizem suas atividades rotineiras de maneira clara e objetiva, reduzindo a necessidade de navegação desnecessária ou utilização de ferramentas externas.
+
+**RNF-008 — Feedback ao usuário:**
+O sistema deverá apresentar mensagens claras e compreensíveis em situações de erro, conflito ou impedimento de uma operação, informando ao usuário o motivo da ação não ter sido concluída.
+
+**RNF-009 — Flexibilidade:**
+A estrutura da solução deverá permitir a inclusão de novas unidades, profissionais e áreas de atuação sem necessidade de reformulação significativa dos principais conceitos do sistema.
+
+**RNF-010 — Consistência dos dados:**
+O sistema deverá preservar a consistência entre vínculos profissionais, disponibilidades, pacientes, agendamentos e atendimentos, evitando informações contraditórias.
+
+**RNF-011 — Idempotência de operações críticas:**
+Operações críticas de criação ou alteração deverão evitar efeitos duplicados quando uma mesma solicitação for enviada repetidamente de forma acidental, especialmente em processos como criação de agendamentos.
+
+**RNF-012 — Integridade da agenda:**
+Após a conclusão válida de um agendamento, o horário correspondente não deverá continuar disponível para outro agendamento conflitante.
+
+**RNF-013 — Disponibilidade do sistema:**
+A plataforma deverá permanecer acessível continuamente aos usuários autorizados, ressalvadas interrupções planejadas para manutenção ou situações excepcionais.
+
+**RNF-014 — Responsividade:**
+A interface deverá ser responsiva e permitir utilização adequada em computadores, tablets e navegadores de dispositivos móveis, sem necessidade de desenvolvimento de aplicativo móvel específico.
+
+**RNF-015 — Manutenibilidade:**
+A solução deverá ser estruturada com responsabilidades bem definidas e baixo acoplamento entre seus principais componentes, favorecendo futuras correções e evoluções.
+
+## HISTÓRIAS DO USUÁRIO
+
+**Administrador:**
+
+**HU-001 — Gerenciamento de usuários e acessos**
+Como administrador, quero cadastrar, atualizar, ativar e bloquear usuários e definir seus perfis e permissões, para controlar quem pode acessar cada informação e funcionalidade da plataforma.
+Relacionada a: RF-002, RF-003, RF-004 e RF-027.
+
+**HU-002 — Gestão das unidades e profissionais**
+Como administrador, quero cadastrar unidades e visualizar quais profissionais estão vinculados a cada uma delas, para manter uma visão organizada da estrutura da organização.
+Relacionada a: RF-005, RF-006, RF-007 e RF-008.
+
+**HU-003 — Visão geral da operação**
+Como administrador, quero visualizar informações consolidadas sobre profissionais, pacientes e atendimentos, com possibilidade de filtragem por unidade e período, para acompanhar rapidamente o funcionamento da organização.
+Relacionada a: RF-009.
+
+**HU-004 — Consulta de auditoria**
+Como administrador, quero consultar os registros das operações relevantes realizadas na plataforma, para identificar alterações, responsáveis e momentos em que determinadas ações ocorreram.
+Relacionada a: RF-028 e RF-029.
+
+**Recepcionista / Atendente:**
+
+**HU-005 — Cadastro e localização de pacientes**
+Como recepcionista, quero cadastrar um novo paciente ou localizar um cadastro já existente, para utilizar suas informações no processo de agendamento sem criar registros duplicados desnecessariamente.
+Relacionada a: RF-010 e RF-011.
+
+**HU-006 — Atualização dos dados administrativos do paciente**
+Como recepcionista, quero atualizar os dados administrativos autorizados de um paciente, para manter suas informações de contato atualizadas sem acessar informações profissionais dos atendimentos.
+Relacionada a: RF-012 e RF-027.
+
+**HU-007 — Consulta de disponibilidade**
+Como recepcionista, quero visualizar no próprio sistema os horários disponíveis dos psicólogos em cada unidade, para realizar agendamentos sem precisar consultar agendas ou ferramentas externas.
+Relacionada a: RF-015, RF-020 e RF-021.
+
+**HU-008 — Realização do agendamento**
+Como recepcionista, quero selecionar paciente, psicólogo, unidade, data e horário disponíveis, para registrar uma consulta de forma centralizada e evitar conflitos de agenda.
+Relacionada a: RF-016, RF-020, RF-021 e RF-022.
+
+**HU-009 — Manutenção dos agendamentos**
+Como recepcionista, quero confirmar, cancelar ou reagendar consultas já cadastradas, para manter a agenda atualizada de acordo com as necessidades dos pacientes e profissionais.
+Relacionada a: RF-017, RF-018 e RF-019.
+
+**Psicólogo:**
+**HU-010 — Gerenciamento da disponibilidade**
+Como psicólogo, quero cadastrar e alterar os períodos em que estou disponível para atendimento em cada unidade em que atuo, para manter minha disponibilidade profissional atualizada.
+Relacionada a: RF-013.
+
+**HU-011 — Consulta da própria agenda**
+Como psicólogo, quero consultar em um único ambiente meus horários e consultas agendadas, para organizar minha rotina de atendimentos sem precisar recorrer a outras ferramentas.
+Relacionada a: RF-014.
+
+**HU-012 — Consulta de pacientes vinculados**
+Como psicólogo, quero visualizar somente os pacientes aos quais possuo vínculo autorizado, para acessar as informações necessárias ao atendimento respeitando as regras de acesso da organização.
+Relacionada a: RF-023 e RF-027.
+
+**HU-013 — Registro do atendimento**
+Como psicólogo, quero registrar informações detalhadas referentes a uma consulta realizada, para manter documentado o acompanhamento profissional daquele paciente.
+Relacionada a: RF-024.
+
+**HU-014 — Consulta do histórico de atendimentos**
+Como psicólogo, quero consultar cronologicamente os registros detalhados dos atendimentos dos meus pacientes vinculados, para acompanhar o histórico das consultas realizadas.
+Relacionada a: RF-025.
+
+**HU-015 — Correção de registro de atendimento**
+Como psicólogo, quero corrigir um registro de atendimento sob minha responsabilidade quando necessário, para manter a informação correta sem perder a rastreabilidade das alterações efetuadas.
+Relacionada a: RF-026 e RF-028.
+
