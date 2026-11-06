@@ -464,3 +464,158 @@ Relacionada a: RF-025.
 Como psicólogo, quero corrigir um registro de atendimento sob minha responsabilidade quando necessário, para manter a informação correta sem perder a rastreabilidade das alterações efetuadas.
 Relacionada a: RF-026 e RF-028.
 
+## CRITÉRIOS DE ACEITE
+
+**HU-001 — Gerenciamento de usuários e acessos:**
+CA-001.1 — O administrador deverá conseguir cadastrar um usuário informando os dados obrigatórios definidos pelo sistema.
+
+CA-001.2 — O sistema não deverá permitir a criação de usuários com identificador de acesso já utilizado por outra conta.
+
+CA-001.3 — O administrador deverá conseguir atribuir e alterar perfis e permissões de um usuário.
+
+CA-001.4 — Quando um usuário for bloqueado, o sistema deverá impedir novos acessos e invalidar seu acesso ativo quando tecnicamente aplicável.
+
+CA-001.5 — Usuários sem a permissão correspondente não deverão conseguir acessar funcionalidades restritas, mesmo por tentativa de acesso direto.
+
+**HU-002 — Gestão das unidades e profissionais:**
+CA-002.1 — O administrador deverá conseguir cadastrar uma nova unidade informando os dados obrigatórios.
+
+CA-002.2 — O administrador deverá conseguir consultar os profissionais vinculados a cada unidade.
+
+CA-002.3 — Um mesmo psicólogo poderá possuir vínculo com mais de uma unidade.
+
+CA-002.4 — O encerramento de um vínculo profissional não deverá excluir seu histórico.
+
+CA-002.5 — O sistema não deverá permitir vínculo duplicado ativo entre o mesmo psicólogo e a mesma unidade.
+
+**HU-003 — Visão geral da operação:**
+CA-003.1 — O painel deverá apresentar informações consolidadas sobre profissionais, pacientes e atendimentos.
+
+CA-003.2 — O administrador deverá conseguir filtrar as informações por unidade quando aplicável.
+
+CA-003.3 — O administrador deverá conseguir selecionar um período para consultar dados relacionados aos atendimentos.
+
+CA-003.4 — Os dados exibidos no painel deverão refletir as informações registradas no sistema.
+
+**HU-004 — Consulta de auditoria:**
+CA-004.1 — O administrador deverá conseguir consultar os registros de auditoria autorizados.
+
+CA-004.2 — Cada registro deverá identificar, no mínimo, o usuário responsável, a ação realizada e a data/hora da operação.
+
+CA-004.3 — Usuários sem permissão de auditoria não deverão conseguir acessar esses registros.
+
+CA-004.4 — Alterações relevantes em dados administrativos ou profissionais deverão gerar registro de auditoria quando previsto pelas regras do sistema.
+
+**Recepcionista / Atendente:**
+
+**HU-005 — Cadastro e localização de pacientes:**
+CA-005.1 — A recepcionista deverá conseguir pesquisar pacientes já cadastrados antes de criar um novo cadastro.
+
+CA-005.2 — O sistema deverá permitir o cadastro de um novo paciente quando não houver registro correspondente.
+
+CA-005.3 — O cadastro deverá exigir apenas os dados administrativos obrigatórios definidos para o paciente.
+
+CA-005.4 — Após o cadastro, o paciente deverá estar disponível para utilização no processo de agendamento.
+
+CA-005.5 — O sistema deverá adotar validações que reduzam a criação desnecessária de cadastros duplicados.
+
+**HU-006 — Atualização dos dados administrativos do paciente:**
+CA-006.1 — A recepcionista deverá conseguir alterar somente os dados administrativos do paciente para os quais possuir autorização.
+
+CA-006.2 — As alterações realizadas deverão ficar disponíveis nas consultas posteriores do cadastro.
+
+CA-006.3 — A recepcionista não deverá conseguir visualizar ou modificar registros profissionais de atendimento.
+
+CA-006.4 — Tentativas de acesso a informações profissionais sem autorização deverão ser negadas pelo sistema.
+
+**HU-007 — Consulta de disponibilidade:**
+CA-007.1 — A recepcionista deverá conseguir selecionar uma unidade e visualizar os psicólogos vinculados a ela.
+
+CA-007.2 — O sistema deverá apresentar os períodos disponíveis de cada psicólogo para a unidade selecionada.
+
+CA-007.3 — Horários já ocupados por agendamentos ativos não deverão aparecer como disponíveis.
+
+CA-007.4 — As informações de disponibilidade deverão poder ser consultadas sem necessidade de ferramenta externa.
+
+**HU-008 — Realização do agendamento:**
+CA-008.1 — O agendamento somente poderá ser concluído quando paciente, psicólogo, unidade, data e horário estiverem definidos.
+
+CA-008.2 — O psicólogo selecionado deverá possuir vínculo ativo com a unidade escolhida.
+
+CA-008.3 — O horário selecionado deverá estar dentro da disponibilidade cadastrada pelo psicólogo naquela unidade.
+
+CA-008.4 — O sistema deverá impedir agendamento em horário conflitante com outro agendamento ativo do mesmo psicólogo.
+
+CA-008.5 — Após a conclusão, a consulta deverá aparecer na agenda do psicólogo e o horário correspondente não deverá permanecer disponível.
+
+CA-008.6 — Se for o primeiro agendamento válido entre aquele paciente e psicólogo, o vínculo entre ambos deverá ser criado conforme as regras definidas.
+
+**HU-009 — Manutenção dos agendamentos:**
+CA-009.1 — A recepcionista deverá conseguir confirmar um agendamento existente.
+
+CA-009.2 — A recepcionista deverá conseguir cancelar um agendamento permitido pelas regras do sistema.
+
+CA-009.3 — A recepcionista deverá conseguir reagendar uma consulta para outro horário válido.
+
+CA-009.4 — Um reagendamento deverá passar novamente pelas validações de unidade, vínculo, disponibilidade e conflito de horário.
+
+CA-009.5 — Todo agendamento deverá possuir uma situação válida entre Agendado, Confirmado, Realizado, Cancelado ou Não Compareceu.
+
+**Psicólogo:**
+**HU-010 — Gerenciamento da disponibilidade:**
+CA-010.1 — O psicólogo deverá conseguir cadastrar períodos de disponibilidade apenas para unidades com as quais possua vínculo ativo.
+
+CA-010.2 — O psicólogo deverá conseguir alterar sua disponibilidade futura.
+
+CA-010.3 — A alteração da disponibilidade não deverá eliminar automaticamente consultas já agendadas.
+
+CA-010.4 — O sistema deverá impedir o cadastro de uma disponibilidade inválida, como horário final anterior ao horário inicial.
+
+**HU-011 — Consulta da própria agenda:**
+CA-011.1 — O psicólogo deverá conseguir consultar seus próprios agendamentos.
+
+CA-011.2 — A agenda deverá permitir identificar data, horário, unidade e paciente relacionados a cada consulta autorizada.
+
+CA-011.3 — O psicólogo não deverá conseguir alterar diretamente consultas já agendadas por meio dessa função.
+
+CA-011.4 — Alterações de cancelamento ou reagendamento deverão ser realizadas pelos usuários administrativos autorizados.
+
+**HU-012 — Consulta de pacientes vinculados:**
+CA-012.1 — O psicólogo deverá conseguir visualizar os pacientes com os quais possuir vínculo autorizado.
+
+CA-012.2 — Pacientes sem vínculo autorizado com o psicólogo não deverão ter seus registros profissionais disponibilizados a ele.
+
+CA-012.3 — O encerramento de um vínculo deverá preservar o histórico correspondente.
+
+CA-012.4 — O acesso às informações deverá respeitar também as permissões atribuídas ao usuário.
+
+**HU-013 — Registro do atendimento:**
+CA-013.1 — O psicólogo somente deverá conseguir registrar atendimento relacionado a uma consulta efetivamente realizada.
+
+CA-013.2 — O atendimento deverá permanecer associado ao psicólogo e ao paciente correspondentes.
+
+CA-013.3 — O sistema deverá permitir o preenchimento das informações profissionais previstas para o registro do atendimento.
+
+CA-013.4 — Após salvo, o atendimento deverá integrar o histórico correspondente do paciente.
+
+CA-013.5 — Usuários administrativos sem autorização profissional não deverão conseguir visualizar o conteúdo detalhado do atendimento.
+
+**HU-014 — Consulta do histórico de atendimentos:**
+CA-014.1 — O psicólogo deverá conseguir acessar o histórico dos pacientes aos quais possuir autorização.
+
+CA-014.2 — Os atendimentos deverão ser apresentados de maneira cronológica.
+
+CA-014.3 — Cada item do histórico deverá permitir acesso às informações detalhadas correspondentes àquele atendimento.
+
+CA-014.4 — O sistema não deverá disponibilizar ao psicólogo histórico profissional de pacientes para os quais não possua vínculo ou autorização adequada.
+
+**HU-015 — Correção de registro de atendimento:**
+CA-015.1 — O psicólogo deverá conseguir corrigir registros de atendimento sob sua responsabilidade quando autorizado.
+
+CA-015.2 — A correção não deverá eliminar a rastreabilidade da versão ou alteração anterior.
+
+CA-015.3 — O sistema deverá registrar quem efetuou a alteração e quando ela ocorreu.
+
+CA-015.4 — Outro psicólogo sem autorização sobre aquele atendimento não deverá conseguir modificar o registro.
+
+CA-015.5 — Após a correção, a versão vigente deverá ser apresentada normalmente no histórico, mantendo-se a rastreabilidade da alteração.
