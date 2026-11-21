@@ -113,7 +113,7 @@
 3. Se optar pelo cadastro, informa os dados necessários da nova unidade.
 4. Se optar por atualizar, o administrador seleciona uma unidade já cadastrada.
 5. O sistema apresenta as informações da unidade selecionada.
-6. O administrador informa os dados necessários para o cadastro e realiza as alterações necessárias.
+6. O administrador informa os dados e realiza as alterações necessárias.
 7. O sistema registra a operação realizada.
 
 **Fluxos alternativos:**
@@ -391,7 +391,7 @@
 8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
 9. Se todas as validações forem atendidas, o sistema registra o agendamento.
 10. O sistema atualiza a agenda e a disponibilidade do horário.
-11. O sistema verifica se já existe vínculo entre o paciente e o psicólogo e, caso não exista, cria o vínculo.
+11. Se ainda não existir vínculo entre o paciente e o psicólogo, o sistema cria o vínculo.
 12. O sistema informa que o agendamento foi concluído.
 
 **Fluxos alternativos:**
@@ -418,7 +418,7 @@
 **Objetivo:** Permitir a confirmação de uma consulta previamente agendada.
 
 **Pré-condições:**
-- Existe um agendamento em situação Agendado ou Reagendado.
+- Existe um agendamento em situação Agendado.
 - A recepcionista está autenticada e possui autorização para confirmar agendamentos.
 
 **Fluxo principal:**
@@ -450,7 +450,7 @@
 **Objetivo:** Permitir o cancelamento de uma consulta agendada.
 
 **Pré-condições:**
-- Existe um agendamento em situação Agendado, Confirmado ou Reagendado.
+- Existe um agendamento em situação Agendado ou Confirmado.
 - A recepcionista está autenticada e possui autorização para cancelar agendamentos.
 
 **Fluxo principal:**
@@ -487,7 +487,7 @@
 **Objetivo:** Permitir a alteração da data ou do horário de uma consulta por meio de reagendamento.
 
 **Pré-condições:**
-- Existe um agendamento em situação Agendado, Confirmado ou Reagendado.
+- Existe um agendamento em situação Agendado ou Confirmado.
 - A recepcionista está autenticada e possui autorização para reagendar consultas.
 
 **Fluxo principal:**
@@ -499,15 +499,15 @@
 6. O sistema verifica se o psicólogo possui vínculo ativo com a unidade selecionada.
 7. O sistema verifica a disponibilidade do psicólogo para a nova data e horário.
 8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
-9. Se todas as validações forem atendidas, o sistema registra a nova data e/ou o novo horário.
+9. Se todas as validações forem atendidas, o sistema registra a nova data e o novo horário e atualiza o status do agendamento para "Agendado"..
 10. O sistema libera o horário anterior e reserva o novo horário, atualizando a agenda e a disponibilidade.
 11. O sistema registra a operação conforme as regras de auditoria.
 12. O sistema informa que o reagendamento foi concluído.
 
-**Fluxos alternativos:** 
-**-FA-01 — Novo horário indisponível:** o sistema informa que o horário selecionado não está disponível e permite que a recepcionista escolha outra opção.
-**-FA-02 — Operação não confirmada:** se a recepcionista desistir antes da conclusão, o reagendamento não é efetivado e o agendamento original é mantido.
-**-FA-03 — Nova opção de horário:** a recepcionista seleciona outra data ou horário e o sistema realiza novamente as validações.
+**Fluxos alternativos:**
+- **FA-01 — Novo horário indisponível:** o sistema informa que o horário selecionado não está disponível e permite que a recepcionista escolha outra opção.
+- **FA-02 — Operação não confirmada:** se a recepcionista desistir antes da conclusão, o reagendamento não é efetivado e o agendamento original é mantido.
+- **FA-03 — Nova opção de horário:** a recepcionista seleciona outra data ou horário e o sistema realiza novamente as validações.
 
 **Exceções:**
 - **E-01 — Vínculo profissional inválido:** o reagendamento não é concluído se o psicólogo não possuir vínculo ativo com a unidade selecionada.
@@ -519,8 +519,8 @@
 **Pós-condições:**
 - A nova data e o novo horário da consulta são registrados.
 - O horário anterior é liberado e o novo horário fica reservado, após a conclusão válida do reagendamento.
-- O status do agendamento é alterado para Reagendado.
-- Se a consulta já estava com status Reagendado, permanece com essa mesma situação após um novo reagendamento.
+- O agendamento retorna ao status "Agendado", conforme RN-014 e CA-009.7.
+- O histórico do reagendamento é preservado.
 
 ## UC-20 — Consultar pacientes vinculados
 
@@ -563,7 +563,7 @@
 4. O psicólogo preenche as informações do atendimento.
 5. O sistema salva o registro e o associa ao psicólogo e ao paciente correspondentes.
 6. O atendimento passa a integrar o histórico do paciente.
-7. O sistema atualiza a situação do agendamento correspondente para "Realizado".
+7. Após salvar validamente o registro do atendimento, o sistema atualiza automaticamente a situação do agendamento correspondente para "Realizado".
 
 **Fluxos alternativos:** Não especificados no documento.
 
@@ -650,4 +650,103 @@
 **Pós-condições:**
 - Os registros de auditoria autorizados ficam disponíveis para consulta.
 
+## UC-25 — Gerenciar áreas de atuação
 
+**Requisito relacionado:** RF-032 — Gerenciar áreas de atuação  
+**Critérios de aceite relacionados:** CA-017.1  
+**Ator principal:** Administrador.
+
+**Objetivo:** Permitir ao administrador cadastrar, consultar e atualizar as áreas de atuação disponíveis na plataforma.
+
+**Pré-condições:**
+- O administrador está autenticado.
+- O administrador possui autorização para gerenciar as áreas de atuação.
+
+**Fluxo principal:**
+1. O administrador solicita o gerenciamento das áreas de atuação.
+2. O sistema apresenta as opções de gerenciamento.
+3. O administrador escolhe a operação desejada: cadastrar, consultar ou atualizar uma área de atuação.
+4. O sistema executa a operação solicitada.
+5. O sistema apresenta o resultado da operação.
+
+**Fluxos alternativos:**
+- O administrador pode optar pelo cadastro, consulta ou atualização de uma área de atuação.
+
+**Exceções:**
+- As condições específicas de rejeição das operações não estão detalhadas nos requisitos.
+
+**Pós-condições:**
+- A operação solicitada é apresentada ou registrada pelo sistema, conforme o tipo de gerenciamento realizado.
+
+## UC-26 — Associar áreas de atuação ao psicólogo
+
+**Requisito relacionado:** RF-033 — Associar áreas de atuação ao psicólogo  
+**Regra de negócio relacionada:** RN-022 — Áreas de atuação do psicólogo  
+**Critérios de aceite relacionados:** CA-017.2, CA-017.3, CA-017.4 e CA-017.5  
+**Ator principal:** Administrador.
+
+**Objetivo:** Permitir ao administrador associar uma ou mais áreas de atuação cadastradas a um psicólogo.
+
+**Pré-condições:**
+- O administrador está autenticado.
+- O psicólogo está cadastrado no sistema.
+- Existem áreas de atuação cadastradas no catálogo.
+
+**Fluxo principal:**
+1. O administrador solicita a associação de áreas de atuação a um psicólogo.
+2. O sistema apresenta os psicólogos cadastrados.
+3. O administrador seleciona o psicólogo desejado.
+4. O sistema apresenta as áreas de atuação disponíveis.
+5. O administrador seleciona uma ou mais áreas de atuação.
+6. O sistema verifica se as associações não são duplicadas.
+7. O sistema registra as associações realizadas.
+8. O sistema apresenta a confirmação da operação.
+
+**Fluxos alternativos:**
+- O administrador poderá selecionar mais de uma área de atuação para o mesmo psicólogo.
+
+**Exceções:**
+- O sistema não permite associar novamente uma área de atuação já vinculada ao mesmo psicólogo.
+- O sistema impede a ativação do perfil profissional de um psicólogo sem pelo menos uma área de atuação associada.
+- O sistema impede que um psicólogo com perfil profissional ativo fique sem qualquer área de atuação associada.
+
+**Pós-condições:**
+- As áreas de atuação selecionadas ficam associadas ao psicólogo.
+- As associações respeitam as regras de unicidade e obrigatoriedade definidas pelo sistema.
+
+## UC-27 — Registrar não comparecimento
+
+**Requisito relacionado:** RF-030 — Registrar não comparecimento.
+
+**Regra de negócio relacionada:** RN-009 e RN-014.
+
+**Critério de aceite relacionado:** CA-009.6.
+
+**Ator principal:** Recepcionista/atendente.
+
+**Objetivo:** Permitir que a recepcionista registre o não comparecimento do paciente a uma consulta agendada.
+
+**Pré-condições:**
+- Existe um agendamento elegível para o registro de não comparecimento.
+- A recepcionista está autenticada e possui autorização para realizar a operação.
+
+**Fluxo principal:**
+1. A recepcionista acessa a consulta de agendamentos.
+2. Pesquisa e seleciona o agendamento correspondente ao paciente que não compareceu.
+3. O sistema apresenta os dados do agendamento selecionado.
+4. A recepcionista solicita o registro do não comparecimento.
+5. O sistema verifica se a operação é permitida para o usuário e para a situação atual do agendamento.
+6. O sistema atualiza o status do agendamento para "Não Compareceu".
+7. O sistema registra a operação conforme as regras de auditoria aplicáveis.
+8. O sistema informa que o não comparecimento foi registrado.
+
+**Fluxos alternativos:**
+- **FA-01 — Agendamento não localizado:** se a pesquisa não encontrar o agendamento, o sistema informa que ele não foi localizado.
+
+**Exceções:**
+- **E-01 — Permissão insuficiente:** o sistema impede o registro quando a recepcionista não possui autorização.
+- **E-02 — Situação incompatível:** o sistema impede o registro quando o agendamento não está em uma situação que permite a operação.
+
+**Pós-condições:**
+- O agendamento fica com o status "Não Compareceu".
+- A operação fica registrada conforme as regras de auditoria aplicáveis.
