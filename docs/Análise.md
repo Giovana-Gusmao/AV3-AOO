@@ -110,11 +110,17 @@ Ele não deverá possuir acesso administrativo geral da organização simplesmen
 
 ## FORA DO ESCOPO
 ° Faturamento, pagamentos, convênios e emissão de notas fiscais.
+
 ° Folha de pagamento e gestão trabalhista
+
 ° Teleconsulta ou videoconferência integrada.
+
 ° Portal de acesso direto do paciente.
+
 ° Aplicativo móvel nativo como produto separado.
+
 ° Gestão multiempresa de organizações independentes.
+
 ° Prontuário clínico completo e utilização de dados reais de pacientes nos artefatos
 acadêmicos.
 
