@@ -28,12 +28,6 @@ Esta matriz apresenta a relação entre os atores do sistema e as funcionalidade
 
 ° **RF-029 — Consultar auditoria:** funcionalidade atribuída ao administrador.
 
-° **Acesso aos registros profissioanis:** a recepcionista pode acessar os dados administrativos necessários às suas funções, mas não pode consultar o conteúdo profissional detalhado dos registros de atendimento psicológico.
+° **Acesso aos registros profissionais:** a recepcionista pode acessar os dados administrativos necessários às suas funções, mas não pode consultar o conteúdo profissional detalhado dos registros de atendimento psicológico.
 
 ° **Paciente:** nesta versão do sistema, o paciente é uma pessoa cadastrada, sem acesso direto à plataforma.
-
-## 4. Pendências: 
-
-° Os requisitos RF-020 a RF-022 devem ser conferidos para que seus nomes e suas relações com os atores correspondam exatamente ao documento oficial de requisitos.
-
-° Confirmar que as especificações textuais e os diagramas comportamentais refletem as mesmas regras de negócio e permissões definidas pela equipe.
