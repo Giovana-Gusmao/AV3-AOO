@@ -166,8 +166,7 @@
 4. O sistema cria ou encerra o vínculo solicitado.
 5. O sistema preserva o histórico do vínculo.
 
-**Fluxos alternativos:**
-- O administrador pode criar um vínculo ou encerrar um vínculo existente.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
 - O sistema não deve permitir vínculo ativo duplicado entre o mesmo psicólogo e a mesma unidade (CA-002.5).
@@ -213,8 +212,7 @@
 2. O sistema apresenta informações consolidadas sobre profissionais, pacientes e atendimentos.
 3. Quando aplicável, o administrador filtra as informações por unidade e período.
 
-**Fluxos alternativos:**
-- O administrador pode selecionar filtros por unidade e período, quando aplicáveis.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:** Não especificadas no documento.
 
@@ -312,8 +310,7 @@
 3. O sistema verifica a validade da disponibilidade.
 4. O sistema registra a disponibilidade cadastrada ou alterada.
 
-**Fluxos alternativos:**
-- O psicólogo pode cadastrar uma nova disponibilidade ou alterar uma disponibilidade futura.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
 - O sistema deve impedir o cadastro de uma disponibilidade inválida, como horário final anterior ao horário inicial (CA-010.4).
@@ -670,8 +667,7 @@
 4. O sistema executa a operação solicitada.
 5. O sistema apresenta o resultado da operação.
 
-**Fluxos alternativos:**
-- O administrador pode optar pelo cadastro, consulta ou atualização de uma área de atuação.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
 - As condições específicas de rejeição das operações não estão detalhadas nos requisitos.
@@ -703,8 +699,7 @@
 7. O sistema registra as associações realizadas.
 8. O sistema apresenta a confirmação da operação.
 
-**Fluxos alternativos:**
-- O administrador poderá selecionar mais de uma área de atuação para o mesmo psicólogo.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
 - O sistema não permite associar novamente uma área de atuação já vinculada ao mesmo psicólogo.
