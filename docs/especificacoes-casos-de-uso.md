@@ -17,8 +17,9 @@
 **Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
-- Usuário sem autorização não deve acessar funcionalidades restritas, conforme RF-027 e RN-020.
-- O comportamento específico para credenciais incorretas não está detalhado no documento.
+- Credenciais inválidas: o sistema deve negar a autenticação quando as credenciais informadas forem inválidas (CA-016.2).
+- O sistema deve impedir a autenticação de usuários bloqueados ou inativos (CA-016.3).
+- O sistema deve permitir acesso somente às funcionalidades autorizadas para o perfil do usuário (CA-016.4).
 
 **Pós-condições:**
 - O usuário autenticado pode acessar as funcionalidades autorizadas conforme seu perfil e suas permissões.
@@ -112,12 +113,11 @@
 2. O administrador escolhe cadastrar uma nova unidade ou atualizar uma unidade existente.
 3. Se optar pelo cadastro, informa os dados necessários da nova unidade.
 4. Se optar por atualizar, o administrador seleciona uma unidade já cadastrada.
-5. O sistema apresenta as informações da unidade selecionada.
-6. O administrador informa os dados e realiza as alterações necessárias.
+5. Se a operação for de atualização, o sistema apresenta as informações da unidade selecionada.
+6. O administrador informa os dados e realiza as alterações necessárias, conforme a operação escolhida.
 7. O sistema registra a operação realizada.
 
-**Fluxos alternativos:**
-- O administrador pode cadastrar uma nova unidade ou atualizar uma unidade existente.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:** Não especificadas no documento.
 
@@ -135,10 +135,12 @@
 - O administrador está autenticado e possui permissão para acessar as informações administrativas dos profissionais.
 
 **Fluxo principal:**
-1. O administrador solicita a consulta dos profissionais cadastrados.
-2. O sistema apresenta as informações administrativas dos profissionais.
-3. O administrador realiza a manutenção das informações, quando necessário.
-4. O sistema registra as alterações realizadas.
+1. O administrador solicita o gerenciamento dos profissionais.
+2. O administrador escolhe cadastrar, consultar ou atualizar um profissional.
+3. Se optar pelo cadastro, informa os dados de identificação profissional e o registro no Conselho Regional de Psicologia (CRP).
+4. Se optar pela consulta, o sistema apresenta as informações do profissional selecionado.
+5. Se optar pela atualização, o administrador seleciona o profissional e altera as informações necessárias.
+6. O sistema registra a operação realizada.
 
 **Fluxos alternativos:** Não especificados no documento.
 
@@ -235,8 +237,7 @@
 3. O sistema cadastra o paciente.
 4. O cadastro fica disponível para utilização no processo de agendamento.
 
-**Fluxos alternativos:**
-- **FA-01 — Paciente já cadastrado:** se a recepcionista identificar que o paciente já possui cadastro, poderá utilizar as informações existentes, sem criar um novo registro desnecessariamente.
+**Fluxos alternativos:** Não especificados no documento.
 
 **Exceções:**
 - O sistema deve adotar validações para reduzir cadastros duplicados (CA-005.5).
@@ -499,7 +500,7 @@
 6. O sistema verifica se o psicólogo possui vínculo ativo com a unidade selecionada.
 7. O sistema verifica a disponibilidade do psicólogo para a nova data e horário.
 8. O sistema verifica se existe conflito com outro agendamento ativo do mesmo psicólogo.
-9. Se todas as validações forem atendidas, o sistema registra a nova data e o novo horário e atualiza o status do agendamento para "Agendado"..
+9. Se todas as validações forem atendidas, o sistema registra a nova data e o novo horário e atualiza o status do agendamento para "Agendado".
 10. O sistema libera o horário anterior e reserva o novo horário, atualizando a agenda e a disponibilidade.
 11. O sistema registra a operação conforme as regras de auditoria.
 12. O sistema informa que o reagendamento foi concluído.
